@@ -1,0 +1,15 @@
+.auth {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.form {
+		.email,
+		.password {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+}
