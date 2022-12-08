@@ -8,28 +8,37 @@ const Login = () => {
 		<div className={`container ${styles.auth}`}>
 			<Card>
 				<div className={styles.form}>
-					<div>
-						<FiLogIn />
+					<div className={styles.formTop}>
+						<FiLogIn className={styles.icon} />
+						<h2>Log in</h2>
 					</div>
-					<h2>Log in</h2>
+
 					<form>
-						<div className={styles.email}>
-							<label htmlFor="email">Email</label>
+						<div className={styles.input}>
 							<input type="email" placeholder="Email" required name="email" />
-						</div>
-						<div className={styles.password}>
-							<label htmlFor="password">Password</label>
 							<input
 								type="password"
 								placeholder="Password"
 								required
-								name="Password"
+								name="password"
 							/>
 						</div>
-						<button type="submit">Log in</button>
+						<span className={styles.forgotPassword}>
+							<Link to="/forgot-password">
+								<strong>Forgot password?</strong>
+							</Link>
+						</span>
+						<button className={styles.authButton} type="submit">
+							Log in
+						</button>
 					</form>
-					<Link to="/forgot-password">Forgot password?</Link>
-					<Link to="/register">Register</Link>
+					<hr />
+					<span className={styles.register}>
+						Don't have an account yet?
+						<Link to="/register">
+							<strong> Register</strong>
+						</Link>
+					</span>
 				</div>
 			</Card>
 		</div>
