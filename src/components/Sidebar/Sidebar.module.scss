@@ -1,0 +1,45 @@
+@use '/src/styles/abstracts' as a;
+
+.layout {
+	display: flex;
+	.sidebar {
+		position: static;
+		width: 14rem;
+		height: 100vh;
+		flex-shrink: 0;
+		background-color: a.$primary-color;
+		overflow: auto;
+		transition: all 0.5s;
+
+		.topSection {
+			display: flex;
+			align-items: center;
+			padding: 0.6rem 1rem;
+			transition: all 0.5s;
+			height: 4rem;
+			color: a.$secondary-color;
+			.logo,
+			.hamburguerIcon {
+				gap: 0.5rem;
+				font-family: a.$roboto;
+				font-size: 1.5rem;
+				align-items: center;
+				cursor: pointer;
+			}
+			.hamburguerIcon {
+				display: flex;
+				margin-left: 4rem;
+				transition: all 0.3s;
+			}
+			.hamburguerIconClosed {
+				margin-left: 0;
+			}
+		}
+	}
+	.sidebarClosed {
+		width: 3.75rem;
+	}
+	main {
+		width: 100%;
+	}
+}
