@@ -1,7 +1,7 @@
 @use '/src/styles/abstracts' as a;
 
-header {
-	height: 8vh;
+.header {
+	min-height: 8vh;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
