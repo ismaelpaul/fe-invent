@@ -1,0 +1,7 @@
+@use '/src/styles/abstracts' as a;
+
+footer {
+	font-family: a.$roboto;
+	text-align: center;
+	margin: 1rem 0;
+}
