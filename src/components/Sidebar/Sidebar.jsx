@@ -3,6 +3,7 @@ import sidebar from '../../data/sidebar';
 import styles from './Sidebar.module.scss';
 import { MdOutlineInventory2 } from 'react-icons/md';
 import { CgMenu } from 'react-icons/cg';
+import SidebarItem from './SidebarItem';
 
 const Sidebar = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(true);
@@ -36,7 +37,11 @@ const Sidebar = ({ children }) => {
 						<CgMenu onClick={toggleSidebar} />
 					</div>
 				</div>
+				{sidebar.map((item, index) => {
+					return <SidebarItem key={index} item={item} isOpen={isOpen} />;
+				})}
 			</div>
+
 			<main>{children}</main>
 		</div>
 	);
