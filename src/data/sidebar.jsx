@@ -1,10 +1,10 @@
-import { FaTh } from 'react-icons/fa';
+import { RxDashboard } from 'react-icons/rx';
 import { HiOutlineMail } from 'react-icons/hi';
 
 const sidebar = [
 	{
 		title: 'Dashboard',
-		icon: <FaTh />,
+		icon: <RxDashboard />,
 		path: '/dashboard',
 	},
 
