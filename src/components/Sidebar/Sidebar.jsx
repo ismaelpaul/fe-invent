@@ -4,11 +4,17 @@ import styles from './Sidebar.module.scss';
 import { MdOutlineInventory2 } from 'react-icons/md';
 import { CgMenu } from 'react-icons/cg';
 import SidebarItem from './SidebarItem';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(true);
 
 	const toggleSidebar = () => setIsOpen(!isOpen);
+	const navigate = useNavigate();
+
+	const goHome = () => {
+		navigate('/');
+	};
 
 	return (
 		<div className={styles.layout}>
@@ -24,7 +30,7 @@ const Sidebar = ({ children }) => {
 						className={styles.logo}
 						style={{ display: isOpen ? 'flex' : 'none' }}
 					>
-						<MdOutlineInventory2 />
+						<MdOutlineInventory2 onClick={goHome} />
 						<p>Invent</p>
 					</div>
 					<div
