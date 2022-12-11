@@ -1,9 +1,74 @@
 import styles from './auth.module.scss';
 import { HiOutlineUserAdd } from 'react-icons/hi';
 import Card from '../../components/Card/Card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { validateEmail } from '../../utils/utils';
+import { registerUser } from '../../utils/api';
+import { useDispatch } from 'react-redux';
+import {
+	setLogin,
+	setName,
+	setUser,
+} from '../../assets/redux/features/auth/authSlice';
 
 const Register = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const initialState = {
+		name: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
+	};
+
+	const [formData, setFormData] = useState(initialState);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const { name, email, password, confirmPassword } = formData;
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
+	};
+
+	const register = async (e) => {
+		e.preventDefault();
+
+		if (!name || !email || !password) {
+			return toast.error('All fields are required.');
+		}
+		if (password.length < 6) {
+			return toast.error('Passwords must be up to 6 characters.');
+		}
+		if (!validateEmail(email)) {
+			return toast.error('Please enter a valid email.');
+		}
+		if (password !== confirmPassword) {
+			return toast.error('Passwords do not match.');
+		}
+
+		const userData = {
+			name,
+			email,
+			password,
+		};
+
+		setIsLoading(true);
+		try {
+			const data = await registerUser(userData);
+			await dispatch(setLogin(true));
+			await dispatch(setName(data.name));
+			navigate('/dashboard');
+			setIsLoading(false);
+		} catch (error) {
+			setIsLoading(true);
+			console.log(error.message);
+		}
+	};
+
 	return (
 		<div className={`container ${styles.auth}`}>
 			<Card>
@@ -13,26 +78,44 @@ const Register = () => {
 						<h2>Register</h2>
 					</div>
 
-					<form>
+					<form onSubmit={register}>
 						<div className={styles.input}>
-							<input type="text" placeholder="Name" required name="name" />
-							<input type="email" placeholder="Email" required name="email" />
+							<input
+								type="text"
+								placeholder="Name"
+								required
+								name="name"
+								value={name}
+								onChange={handleInputChange}
+							/>
+							<input
+								type="email"
+								placeholder="Email"
+								required
+								name="email"
+								value={email}
+								onChange={handleInputChange}
+							/>
 							<input
 								type="password"
 								placeholder="Password"
 								required
 								name="password"
+								value={password}
+								onChange={handleInputChange}
 							/>
 							<input
 								type="password"
 								placeholder="Confirm Password"
 								required
-								name="password"
+								name="confirmPassword"
+								value={confirmPassword}
+								onChange={handleInputChange}
 							/>
 						</div>
 
 						<button className={styles.authButton} type="submit">
-							Log in
+							Register
 						</button>
 					</form>
 					<hr />
