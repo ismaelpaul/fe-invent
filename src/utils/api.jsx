@@ -1,0 +1,23 @@
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+
+const inventApi = axios.create({
+	baseURL: 'http://localhost:9090/api',
+});
+
+export const registerUser = async (userData) => {
+	try {
+		const response = await inventApi.post('/user/register', userData);
+
+		if (response.statusText === 'OK') {
+			toast.success('User registered successfully!');
+		}
+		return response.data;
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
