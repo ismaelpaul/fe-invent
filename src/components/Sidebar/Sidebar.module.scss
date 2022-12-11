@@ -16,12 +16,13 @@
 			align-items: center;
 			padding: 0.6rem 1rem;
 			transition: all 0.5s;
-			height: 4rem;
+			min-height: 8vh;
 			color: a.$secondary-color;
 			.logo,
 			.hamburguerIcon {
 				gap: 0.5rem;
 				font-family: a.$roboto;
+				font-weight: a.$bold;
 				font-size: 1.5rem;
 				align-items: center;
 				cursor: pointer;
