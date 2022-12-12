@@ -1,11 +1,63 @@
 import styles from './auth.module.scss';
 import { FiLogIn } from 'react-icons/fi';
 import Card from '../../components/Card/Card';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { validateEmail } from '../../utils/utils';
+import { loginUser } from '../../utils/api';
+import { setLogin, setName } from '../../assets/redux/features/auth/authSlice';
+import { PulseLoader } from 'react-spinners';
 
 const Login = () => {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const initialState = {
+		email: '',
+		password: '',
+	};
+
+	const [formData, setFormData] = useState(initialState);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const { email, password } = formData;
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
+	};
+
+	const login = async (e) => {
+		e.preventDefault();
+
+		if (!email || !password) {
+			return toast.error('All fields are required.');
+		}
+		if (!validateEmail(email)) {
+			return toast.error('Please enter a valid email.');
+		}
+
+		const userData = {
+			email,
+			password,
+		};
+		setIsLoading(true);
+
+		try {
+			const data = await loginUser(userData);
+			await dispatch(setLogin(true));
+			await dispatch(setName(data.name));
+			navigate('/dashboard');
+			setIsLoading(false);
+		} catch (error) {
+			setIsLoading(false);
+		}
+	};
 	return (
 		<div className={`container ${styles.auth}`}>
+			{isLoading && <PulseLoader color="#252f3c" size={11} />}
 			<Card>
 				<div className={styles.form}>
 					<div className={styles.formTop}>
@@ -13,14 +65,21 @@ const Login = () => {
 						<h2>Log in</h2>
 					</div>
 
-					<form>
+					<form onSubmit={login}>
 						<div className={styles.input}>
-							<input type="email" placeholder="Email" required name="email" />
+							<input
+								type="email"
+								placeholder="Email"
+								name="email"
+								value={email}
+								onChange={handleInputChange}
+							/>
 							<input
 								type="password"
 								placeholder="Password"
-								required
 								name="password"
+								value={password}
+								onChange={handleInputChange}
 							/>
 						</div>
 						<span className={styles.forgotPassword}>
