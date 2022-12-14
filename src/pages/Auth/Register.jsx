@@ -8,9 +8,8 @@ import { validateEmail } from '../../utils/utils';
 import { registerUser } from '../../utils/api';
 import { useDispatch } from 'react-redux';
 import {
-	setLogin,
-	setName,
-	setUser,
+	SET_LOGIN,
+	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
 
 const Register = () => {
@@ -59,8 +58,8 @@ const Register = () => {
 		setIsLoading(true);
 		try {
 			const data = await registerUser(userData);
-			await dispatch(setLogin(true));
-			await dispatch(setName(data.name));
+			await dispatch(SET_LOGIN(true));
+			await dispatch(SET_NAME(data.name));
 			navigate('/dashboard');
 			setIsLoading(false);
 		} catch (error) {

@@ -7,7 +7,10 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { validateEmail } from '../../utils/utils';
 import { loginUser } from '../../utils/api';
-import { setLogin, setName } from '../../assets/redux/features/auth/authSlice';
+import {
+	SET_LOGIN,
+	SET_NAME,
+} from '../../assets/redux/features/auth/authSlice';
 import { PulseLoader } from 'react-spinners';
 
 const Login = () => {
@@ -47,8 +50,8 @@ const Login = () => {
 
 		try {
 			const data = await loginUser(userData);
-			await dispatch(setLogin(true));
-			await dispatch(setName(data.name));
+			await dispatch(SET_LOGIN(true));
+			await dispatch(SET_NAME(data.name));
 			navigate('/dashboard');
 			setIsLoading(false);
 		} catch (error) {

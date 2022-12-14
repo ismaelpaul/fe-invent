@@ -18,14 +18,14 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		setLogin(state, action) {
+		SET_LOGIN(state, action) {
 			state.isLoggedIn = action.payload;
 		},
-		setName(state, action) {
+		SET_NAME(state, action) {
 			localStorage.setItem('name', JSON.stringify(action.payload));
 			state.name = action.payload;
 		},
-		setUser(state, action) {
+		SET_USER(state, action) {
 			const profile = action.payload;
 			state.user.name = profile.name;
 			state.user.email = profile.email;
@@ -36,7 +36,7 @@ const authSlice = createSlice({
 	},
 });
 
-export const { setLogin, setName, setUser } = authSlice.actions;
+export const { SET_LOGIN, SET_NAME, SET_USER } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectName = (state) => state.auth.name;
