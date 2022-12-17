@@ -10,8 +10,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import { Toaster } from 'react-hot-toast';
 
-axios.defaults.withCredentials = true;
-
 function App() {
 	return (
 		<BrowserRouter>
