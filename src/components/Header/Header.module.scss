@@ -23,5 +23,28 @@
 	.icon {
 		margin-right: 5%;
 		font-size: 1.3rem;
+		// transition: all 0.5s linear;
+	}
+	.iconRotateDown {
+		animation: arrow-rotate-down 0.5s ease forwards;
+	}
+	.iconRotateUp {
+		animation: arrow-rotate-up 0.5s ease forwards;
+	}
+}
+@keyframes arrow-rotate-down {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(180deg);
+	}
+}
+@keyframes arrow-rotate-up {
+	0% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(0);
 	}
 }
