@@ -1,0 +1,27 @@
+@use '/src/styles/abstracts' as a;
+
+.dropdownTitle {
+	display: flex;
+	font-size: 1em;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 1rem 1.2rem;
+	color: a.$primary-color;
+	font-family: a.$roboto;
+	span {
+		display: flex;
+		align-items: center;
+		transition: all 0.5s;
+		font-size: 1rem;
+
+		.icon {
+			display: flex;
+			align-items: center;
+			width: 1.5em;
+			font-size: 25px;
+		}
+	}
+}
+.dropdownTitle:hover {
+	background-color: rgb(195, 195, 195);
+}
