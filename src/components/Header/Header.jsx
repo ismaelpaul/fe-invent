@@ -7,6 +7,7 @@ import {
 } from '../../assets/redux/features/auth/authSlice';
 import { getUser } from '../../utils/api';
 import DropdownProfile from '../DropdownProfile/DropdownProfile';
+import useOnclickOutside from 'react-cool-onclickoutside';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -17,6 +18,12 @@ const Header = () => {
 	const user = useSelector(selectUser);
 
 	const toggleDropdown = () => setIsOpen(!isOpen);
+
+	const closeDropdown = useOnclickOutside((e) => {
+		if (!e.target.className.includes('ignoreOnOutsideClick')) {
+			setIsOpen(false);
+		}
+	});
 
 	useEffect(() => {
 		async function getUserData() {
@@ -29,15 +36,11 @@ const Header = () => {
 
 	return (
 		<div className={styles.header}>
-			{isOpen ? (
-				<></>
-			) : (
-				<img
-					className={styles.imageCropperHeader}
-					src={user.picture}
-					alt="Rounded image representing the profile picture of the user"
-				/>
-			)}
+			<img
+				className={styles.imageCropperHeader}
+				src={user.picture}
+				alt="Rounded image representing the profile picture of the user"
+			/>
 
 			<div className={styles.text}>
 				<p>
@@ -48,12 +51,14 @@ const Header = () => {
 			<IoIosArrowDown
 				className={
 					isOpen
-						? `${styles.icon} ${styles.iconRotateDown}`
+						? `${styles.icon} ${styles.iconRotateDown} ${styles.ignoreOnOutsideClick}`
 						: `${styles.icon} ${styles.iconRotateUp}`
 				}
 				onClick={toggleDropdown}
 			/>
-			{isOpen && <DropdownProfile />}
+			{isOpen && (
+				<DropdownProfile closeDropdown={closeDropdown} setIsOpen={setIsOpen} />
+			)}
 		</div>
 	);
 };
