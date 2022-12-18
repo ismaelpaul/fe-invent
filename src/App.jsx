@@ -9,7 +9,7 @@ import Reset from './pages/Auth/Reset';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import { Toaster } from 'react-hot-toast';
-import EditProfile from './pages/ Edit Profile/EditProfile';
+import Profile from './pages/Profile/Profile';
 
 function App() {
 	return (
@@ -33,11 +33,11 @@ function App() {
 					}
 				/>
 				<Route
-					path="/update-profile"
+					path="/profile"
 					element={
 						<Sidebar>
 							<Layout>
-								<EditProfile />
+								<Profile />
 							</Layout>
 						</Sidebar>
 					}

@@ -1,11 +1,11 @@
-import { BiMessageSquareEdit } from 'react-icons/bi';
+import { HiOutlineUser } from 'react-icons/hi';
 import { FiLogOut } from 'react-icons/fi';
 
 const dropdownProfile = [
 	{
-		title: 'Edit Profile',
-		icon: <BiMessageSquareEdit />,
-		path: '/update-profile',
+		title: 'Profile',
+		icon: <HiOutlineUser />,
+		path: '/profile',
 	},
 
 	{
