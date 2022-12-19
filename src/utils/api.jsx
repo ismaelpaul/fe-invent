@@ -42,6 +42,20 @@ export const loginUser = async (userData) => {
 	}
 };
 
+export const logoutUser = async () => {
+	try {
+		const response = await inventApi.get('/user/logout');
+
+		return response.data;
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
+
 export const getLoginStatus = async () => {
 	try {
 		const response = await axios.get('user/loggedin');
