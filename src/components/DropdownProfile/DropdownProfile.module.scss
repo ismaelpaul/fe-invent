@@ -31,6 +31,21 @@
 	hr {
 		border-top: 1px solid a.$hr;
 	}
+	.logoutBtn {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 1rem;
+		font-size: 1rem;
+		border: none;
+		background-color: transparent;
+		color: a.$primary-color;
+		font-family: a.$roboto;
+		.icon {
+			width: 1.6em;
+			font-size: 1.5rem;
+		}
+	}
 }
 
 @keyframes slide-up {

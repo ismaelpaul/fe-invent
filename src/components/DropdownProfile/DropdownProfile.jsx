@@ -1,11 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../assets/redux/features/auth/authSlice';
 import dropdownProfile from '../../data/dropdownprofile';
 import DropdownItems from './DropdownItems';
+import { FiLogOut } from 'react-icons/fi';
+import { SET_LOGIN } from '../../assets/redux/features/auth/authSlice';
+import { logoutUser } from '../../utils/api';
+import { useNavigate } from 'react-router-dom';
 import styles from './DropdownProfile.module.scss';
 
 const DropdownProfile = ({ setIsOpen, closeDropdown }) => {
 	const user = useSelector(selectUser);
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const logout = async () => {
+		await logoutUser();
+		console.log('logged out');
+		dispatch(SET_LOGIN(false));
+		navigate('/login');
+	};
 
 	return (
 		<div ref={closeDropdown} className={styles.container}>
@@ -24,10 +38,15 @@ const DropdownProfile = ({ setIsOpen, closeDropdown }) => {
 						<>
 							<hr />
 							<DropdownItems key={index} item={item} setIsOpen={setIsOpen} />
+							<hr />
 						</>
 					);
 				})}
 			</div>
+			<button className={styles.logoutBtn} onClick={logout}>
+				<FiLogOut className={styles.icon} />
+				Log out
+			</button>
 		</div>
 	);
 };
