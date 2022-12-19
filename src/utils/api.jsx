@@ -68,6 +68,37 @@ export const getLoginStatus = async () => {
 	}
 };
 
+export const forgotPassword = async (userData) => {
+	try {
+		const response = await inventApi.post('/user/forgot-password', userData);
+
+		toast.success(response.data.message);
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
+
+export const resetPassword = async (userData, resetToken) => {
+	try {
+		const response = await inventApi.put(
+			`/user/reset-password/${resetToken}`,
+			userData
+		);
+
+		return response.data;
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
+
 export const getUser = async () => {
 	try {
 		const response = await inventApi.get('/user/profile');
