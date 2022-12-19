@@ -18,15 +18,8 @@ const DropdownItems = ({ item, setIsOpen }) => {
 			<div className={styles.dropdownTitle}>
 				<span>
 					{item.icon && <div className={styles.icon}>{item.icon}</div>}
-					{
-						<div
-							onClick={() => {
-								item.title === 'Log out' ? logout : '';
-							}}
-						>
-							{item.title}
-						</div>
-					}
+
+					{item.title}
 				</span>
 			</div>
 		</NavLink>
