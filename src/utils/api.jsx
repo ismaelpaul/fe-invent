@@ -112,3 +112,8 @@ export const getUser = async () => {
 		toast.error(message);
 	}
 };
+
+export const addNewItem = async (newItem) => {
+	const response = await inventApi.post('/products', newItem);
+	return response.data;
+};
