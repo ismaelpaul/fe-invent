@@ -117,3 +117,9 @@ export const addNewItem = async (newItem) => {
 	const response = await inventApi.post('/products', newItem);
 	return response.data;
 };
+
+export const getAllItems = async () => {
+	const response = await inventApi.get('/products');
+
+	return response.data;
+};
