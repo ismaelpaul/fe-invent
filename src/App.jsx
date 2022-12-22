@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { SET_LOGIN } from './assets/redux/features/auth/authSlice';
 import { useEffect } from 'react';
 import { getLoginStatus } from './utils/api';
+import EditProfile from './pages/Edit Profile/EditProfile';
 
 function App() {
 	const dispatch = useDispatch();
@@ -51,6 +52,16 @@ function App() {
 						<Sidebar>
 							<Layout>
 								<Profile />
+							</Layout>
+						</Sidebar>
+					}
+				></Route>
+				<Route
+					path="/update-profile"
+					element={
+						<Sidebar>
+							<Layout>
+								<EditProfile />
 							</Layout>
 						</Sidebar>
 					}
