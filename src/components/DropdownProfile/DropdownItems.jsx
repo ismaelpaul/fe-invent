@@ -1,18 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { SET_LOGIN } from '../../assets/redux/features/auth/authSlice';
-import { logoutUser } from '../../utils/api';
+import { NavLink } from 'react-router-dom';
+
 import styles from './DropdownItems.module.scss';
 
 const DropdownItems = ({ item, setIsOpen }) => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const logout = async () => {
-		await logoutUser();
-		dispatch(SET_LOGIN(false));
-		navigate('/login');
-	};
 	return (
 		<NavLink to={item.path} onClick={() => setIsOpen(false)}>
 			<div className={styles.dropdownTitle}>
