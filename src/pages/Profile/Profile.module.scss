@@ -1,0 +1,32 @@
+@use '/src/styles/abstracts' as a;
+
+.container {
+	height: 85vh;
+	background-color: a.$bg-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: a.$primary-color;
+	.profile__info {
+		p {
+			font-family: a.$roboto;
+			font-weight: a.$light;
+			padding: 0.5rem 1rem;
+		}
+		hr {
+			border-top: 1px solid a.$hr;
+			margin-top: 0.5rem;
+		}
+		.profile__edit {
+			display: flex;
+			align-items: center;
+			p {
+				padding: 1rem 0.5rem;
+			}
+			.icon {
+				margin-left: 1rem;
+				font-size: 1.5rem;
+			}
+		}
+	}
+}
