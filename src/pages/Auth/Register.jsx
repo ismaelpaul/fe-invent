@@ -1,6 +1,5 @@
 import styles from './auth.module.scss';
 import { HiOutlineUserAdd } from 'react-icons/hi';
-import Card from '../../components/Card/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
@@ -11,6 +10,7 @@ import {
 	SET_LOGIN,
 	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
+import AuthCard from '../../components/Cards/Auth/AuthCard';
 
 const Register = () => {
 	const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const Register = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<Card>
+			<AuthCard>
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<HiOutlineUserAdd className={styles.icon} />
@@ -124,7 +124,7 @@ const Register = () => {
 						</Link>
 					</span>
 				</div>
-			</Card>
+			</AuthCard>
 		</div>
 	);
 };

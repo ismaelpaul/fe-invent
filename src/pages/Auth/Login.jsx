@@ -1,6 +1,5 @@
 import styles from './auth.module.scss';
 import { FiLogIn } from 'react-icons/fi';
-import Card from '../../components/Card/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import {
 	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
 import { PulseLoader } from 'react-spinners';
+import AuthCard from '../../components/Cards/Auth/AuthCard';
 
 const Login = () => {
 	const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const Login = () => {
 	return (
 		<div className={`container ${styles.auth}`}>
 			{isLoading && <PulseLoader color="#252f3c" size={11} />}
-			<Card>
+			<AuthCard>
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<FiLogIn className={styles.icon} />
@@ -102,7 +102,7 @@ const Login = () => {
 						</Link>
 					</span>
 				</div>
-			</Card>
+			</AuthCard>
 		</div>
 	);
 };

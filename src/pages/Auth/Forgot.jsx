@@ -1,10 +1,10 @@
 import { HiOutlineMail } from 'react-icons/hi';
-import Card from '../../components/Card/Card';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { forgotPassword } from '../../utils/api';
-import styles from './auth.module.scss';
 import { validateEmail } from '../../utils/utils';
+import styles from './auth.module.scss';
+import AuthCard from '../../components/Cards/Auth/AuthCard';
 
 const Forgot = () => {
 	const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ const Forgot = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<Card>
+			<AuthCard>
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<HiOutlineMail className={styles.icon} />
@@ -53,7 +53,7 @@ const Forgot = () => {
 						</button>
 					</form>
 				</div>
-			</Card>
+			</AuthCard>
 		</div>
 	);
 };

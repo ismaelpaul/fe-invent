@@ -1,10 +1,10 @@
 import { RiLockPasswordLine } from 'react-icons/ri';
-import Card from '../../components/Card/Card';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { resetPassword } from '../../utils/api';
 import styles from './auth.module.scss';
+import AuthCard from '../../components/Cards/Auth/AuthCard';
 
 const Reset = () => {
 	const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Reset = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<Card>
+			<AuthCard>
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<RiLockPasswordLine className={styles.icon} />
@@ -82,7 +82,7 @@ const Reset = () => {
 						</button>
 					</form>
 				</div>
-			</Card>
+			</AuthCard>
 		</div>
 	);
 };
