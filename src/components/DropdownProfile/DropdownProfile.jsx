@@ -16,7 +16,6 @@ const DropdownProfile = ({ setIsOpen, closeDropdown }) => {
 
 	const logout = async () => {
 		await logoutUser();
-		console.log('logged out');
 		dispatch(SET_LOGIN(false));
 		navigate('/login');
 	};
