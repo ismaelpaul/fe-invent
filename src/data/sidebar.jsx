@@ -9,7 +9,7 @@ const sidebar = [
 	},
 
 	{
-		title: 'Contact Us',
+		title: 'Contact',
 		icon: <HiOutlineMail />,
 		path: '/contact-us',
 	},
