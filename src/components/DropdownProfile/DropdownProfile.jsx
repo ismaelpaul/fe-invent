@@ -23,11 +23,12 @@ const DropdownProfile = ({ setIsOpen, closeDropdown }) => {
 	return (
 		<div ref={closeDropdown} className={styles.container}>
 			<div className={styles.userInfo}>
-				<img
-					className={styles.imageCropper}
-					src={user.picture}
-					alt="Rounded image representing the profile picture of the user"
-				/>
+				<div className={styles.imageCropper}>
+					<img
+						src={user.picture}
+						alt="Rounded image representing the profile picture of the user"
+					/>
+				</div>
 				<h3>{user.name}</h3>
 				<p>{user.email}</p>
 			</div>

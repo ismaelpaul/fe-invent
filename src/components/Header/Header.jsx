@@ -36,11 +36,12 @@ const Header = () => {
 
 	return (
 		<div className={styles.header}>
-			<img
-				className={styles.imageCropperHeader}
-				src={user.picture}
-				alt="Rounded image representing the profile picture of the user"
-			/>
+			<div className={styles.imageCropperHeader}>
+				<img
+					src={user.picture}
+					alt="Rounded image representing the profile picture of the user"
+				/>
+			</div>
 
 			<div className={styles.text}>
 				<p>
