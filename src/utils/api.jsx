@@ -123,3 +123,17 @@ export const getAllItems = async () => {
 
 	return response.data;
 };
+
+export const updateUserProfile = async (formData) => {
+	try {
+		const response = await inventApi.patch('/user/update-profile', formData);
+
+		return response.data;
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
