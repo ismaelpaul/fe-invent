@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { selectUser } from '../../assets/redux/features/auth/authSlice';
 import ProfileCard from '../../components/Cards/Profile/ProfileCard';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
