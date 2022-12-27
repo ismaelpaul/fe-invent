@@ -1,0 +1,22 @@
+@use '/src/styles/abstracts' as a;
+
+h3 {
+	font-size: 1.5rem;
+	font-family: a.$roboto;
+	font-weight: a.$medium;
+}
+.itemsStats__info {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 1.5rem;
+	.icon1 {
+		background-color: lighten(#6d1be7, 40);
+	}
+	.icon2 {
+		background-color: lighten(#009764, 50);
+	}
+	.icon3 {
+		background-color: lighten(#ff1818, 40);
+	}
+}
