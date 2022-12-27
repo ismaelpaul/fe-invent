@@ -1,5 +1,9 @@
+@use '/src/styles/abstracts' as a;
+
 section {
 	min-height: 85vh;
+	background-color: a.$bg-color;
+	padding: 2rem 1rem;
 	.children {
 		max-width: 100%;
 		margin: 0 auto;
