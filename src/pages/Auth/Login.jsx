@@ -60,49 +60,52 @@ const Login = () => {
 	};
 	return (
 		<div className={`container ${styles.auth}`}>
-			{isLoading && <PulseLoader color="#252f3c" size={11} />}
-			<AuthCard>
-				<div className={styles.form}>
-					<div className={styles.formTop}>
-						<FiLogIn className={styles.icon} />
-						<h2>Log in</h2>
-					</div>
-
-					<form onSubmit={login}>
-						<div className={styles.input}>
-							<input
-								type="email"
-								placeholder="Email"
-								name="email"
-								value={email}
-								onChange={handleInputChange}
-							/>
-							<input
-								type="password"
-								placeholder="Password"
-								name="password"
-								value={password}
-								onChange={handleInputChange}
-							/>
+			{isLoading ? (
+				<PulseLoader color="#252f3c" size={11} />
+			) : (
+				<AuthCard>
+					<div className={styles.form}>
+						<div className={styles.formTop}>
+							<FiLogIn className={styles.icon} />
+							<h2>Log in</h2>
 						</div>
-						<span className={styles.forgotPassword}>
-							<Link to="/forgot-password">
-								<strong>Forgot password?</strong>
+
+						<form onSubmit={login}>
+							<div className={styles.input}>
+								<input
+									type="email"
+									placeholder="Email"
+									name="email"
+									value={email}
+									onChange={handleInputChange}
+								/>
+								<input
+									type="password"
+									placeholder="Password"
+									name="password"
+									value={password}
+									onChange={handleInputChange}
+								/>
+							</div>
+							<span className={styles.forgotPassword}>
+								<Link to="/forgot-password">
+									<strong>Forgot password?</strong>
+								</Link>
+							</span>
+							<button className={styles.authButton} type="submit">
+								Log in
+							</button>
+						</form>
+						<hr />
+						<span className={styles.register}>
+							Don't have an account yet?
+							<Link to="/register">
+								<strong> Register</strong>
 							</Link>
 						</span>
-						<button className={styles.authButton} type="submit">
-							Log in
-						</button>
-					</form>
-					<hr />
-					<span className={styles.register}>
-						Don't have an account yet?
-						<Link to="/register">
-							<strong> Register</strong>
-						</Link>
-					</span>
-				</div>
-			</AuthCard>
+					</div>
+				</AuthCard>
+			)}
 		</div>
 	);
 };
