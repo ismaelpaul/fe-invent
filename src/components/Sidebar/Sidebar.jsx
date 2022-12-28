@@ -1,15 +1,21 @@
-import { useState } from 'react';
 import sidebar from '../../data/sidebar';
 import styles from './Sidebar.module.scss';
 import { MdOutlineInventory2 } from 'react-icons/md';
 import { CgMenu } from 'react-icons/cg';
 import SidebarItem from './SidebarItem';
 import { useNavigate } from 'react-router-dom';
+import {
+	selectIsOpen,
+	SET_SIDEBAR,
+} from '../../assets/redux/features/sidebar/sidebarSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Sidebar = ({ children }) => {
-	const [isOpen, setIsOpen] = useState(true);
+	const dispatch = useDispatch();
 
-	const toggleSidebar = () => setIsOpen(!isOpen);
+	const isOpen = useSelector(selectIsOpen);
+
+	const toggleSidebar = () => dispatch(SET_SIDEBAR(!isOpen));
 	const navigate = useNavigate();
 
 	const goHome = () => {
