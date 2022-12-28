@@ -5,6 +5,7 @@ import { addNewItem, getAllItems } from '../../../../utils/api';
 const initialState = {
 	item: null,
 	items: [],
+	isOpenModal: false,
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
@@ -48,6 +49,9 @@ const itemSlice = createSlice({
 		CALC_STORE_VALUE(state, action) {
 			console.log('store value');
 		},
+		SET_ADD_ITEM_MODAL(state, action) {
+			state.isOpenAddItemModal = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder
@@ -85,8 +89,9 @@ const itemSlice = createSlice({
 	},
 });
 
-export const { CALC_STORE_VALUE } = itemSlice.actions;
+export const { CALC_STORE_VALUE, SET_ADD_ITEM_MODAL } = itemSlice.actions;
 
 export const selectIsLoading = (state) => state.item.isLoading;
-
+export const selectIsOpenAddItemModal = (state) =>
+	state.item.isOpenAddItemModal;
 export default itemSlice.reducer;
