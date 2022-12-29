@@ -9,11 +9,13 @@ import {
 	SET_SIDEBAR,
 } from '../../assets/redux/features/sidebar/sidebarSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectIsOpenAddItemModal } from '../../assets/redux/features/item/itemSlice';
 
 const Sidebar = ({ children }) => {
 	const dispatch = useDispatch();
 
 	const isOpen = useSelector(selectIsOpen);
+	const isAddItemModalOpen = useSelector(selectIsOpenAddItemModal);
 
 	const toggleSidebar = () => dispatch(SET_SIDEBAR(!isOpen));
 	const navigate = useNavigate();
@@ -46,7 +48,7 @@ const Sidebar = ({ children }) => {
 								: `${styles.hamburguerIcon} ${styles.hamburguerIconClosed}`
 						}
 					>
-						<CgMenu onClick={toggleSidebar} />
+						<CgMenu onClick={!isAddItemModalOpen ? toggleSidebar : null} />
 					</div>
 				</div>
 				{sidebar.map((item, index) => {
