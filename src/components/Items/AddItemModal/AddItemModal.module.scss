@@ -1,7 +1,14 @@
 @use '/src/styles/abstracts' as a;
 
+$sidebar_close: 8vw;
+$sidebar_close_992px_screen: 6vw;
+$sidebar_close_1200px_screen: 5vw;
+$sidebar_close_1400px_screen: 4.5vw;
+$sidebar_close_1600px_screen: 3.5vw;
+
 .modal__background {
 	height: 92vh;
+	width: (100vw - $sidebar_close);
 	background-color: rgba(136, 136, 136, 0.536);
 	position: fixed;
 	z-index: 99999;
@@ -17,6 +24,7 @@
 		background-color: rgb(255, 255, 255);
 		border-radius: 0.3rem;
 		box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
+
 		.modal__header {
 			display: flex;
 		}
@@ -31,11 +39,25 @@
 		}
 	}
 }
-.modal__sidebarOpen {
-	@extend .modal__background;
-	width: (100vw - a.$sidebar_open);
+
+@media screen and (min-width: 992px) {
+	.modal__background {
+		width: (100vw - $sidebar_close_992px_screen);
+	}
 }
-.modal__sidebarClose {
-	@extend .modal__background;
-	width: (100vw - a.$sidebar_close);
+
+@media screen and (min-width: 1200px) {
+	.modal__background {
+		width: (100vw - $sidebar_close_1200px_screen);
+	}
+}
+@media screen and (min-width: 1400px) {
+	.modal__background {
+		width: (100vw - $sidebar_close_1400px_screen);
+	}
+}
+@media screen and (min-width: 1600px) {
+	.modal__background {
+		width: (100vw - $sidebar_close_1600px_screen);
+	}
 }
