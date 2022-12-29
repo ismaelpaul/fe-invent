@@ -1,6 +1,7 @@
 @use '/src/styles/abstracts' as a;
 
 .auth {
+	color: a.$primary-color;
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -30,6 +31,7 @@
 				margin-top: 1rem;
 				font-size: 0.875rem;
 				text-align: end;
+				color: a.$primary-color;
 			}
 			.authButton {
 				width: 100%;
