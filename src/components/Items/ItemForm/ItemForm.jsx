@@ -14,7 +14,7 @@ const ItemForm = ({
 }) => {
 	return (
 		<div>
-			<form onSubmit={saveItem}>
+			<form className={styles.form__items} onSubmit={saveItem}>
 				<div className={styles.card__image}>
 					<label>Choose an image</label>
 					<span>(Supported formats: .jpg, .jpeg, .png)</span>

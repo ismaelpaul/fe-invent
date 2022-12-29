@@ -1,6 +1,6 @@
 @use '/src/styles/abstracts' as a;
 
-form {
+.form__items {
 	display: flex;
 	gap: 1rem;
 	.card__image {
