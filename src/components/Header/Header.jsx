@@ -9,12 +9,14 @@ import { getUser } from '../../utils/api';
 import DropdownProfile from '../DropdownProfile/DropdownProfile';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import styles from './Header.module.scss';
+import { selectIsOpenAddItemModal } from '../../assets/redux/features/item/itemSlice';
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const dispatch = useDispatch();
 
+	const isAddItemModalOpen = useSelector(selectIsOpenAddItemModal);
 	const user = useSelector(selectUser);
 
 	const toggleDropdown = () => setIsOpen(!isOpen);
@@ -55,7 +57,7 @@ const Header = () => {
 						? `${styles.icon} ${styles.iconRotateDown} ${styles.ignoreOnOutsideClick}`
 						: `${styles.icon} ${styles.iconRotateUp}`
 				}
-				onClick={toggleDropdown}
+				onClick={!isAddItemModalOpen ? toggleDropdown : null}
 			/>
 			{isOpen && (
 				<DropdownProfile closeDropdown={closeDropdown} setIsOpen={setIsOpen} />
