@@ -30,11 +30,11 @@
 		font-size: 1.3rem;
 	}
 	.iconRotateDown {
-		transform: rotate(0deg);
+		transform: rotate(180deg);
 		transition: transform 0.5s ease;
 	}
 	.iconRotateUp {
-		transform: rotate(180deg);
+		transform: rotate(0deg);
 		transition: transform 0.5s ease;
 	}
 }
