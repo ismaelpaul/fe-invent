@@ -137,3 +137,17 @@ export const updateUserProfile = async (formData) => {
 		toast.error(message);
 	}
 };
+
+export const sendContactMessage = async (message) => {
+	try {
+		const response = await inventApi.post('/contact', message);
+
+		return response.data;
+	} catch (error) {
+		const message =
+			(error.response && error.response.data && error.response.message) ||
+			error.message ||
+			error.toString();
+		toast.error(message);
+	}
+};
