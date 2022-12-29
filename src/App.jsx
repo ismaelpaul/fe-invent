@@ -14,6 +14,7 @@ import { SET_LOGIN } from './assets/redux/features/auth/authSlice';
 import { useEffect } from 'react';
 import { getLoginStatus } from './utils/api';
 import EditProfile from './pages/Profile/EditProfile';
+import Contact from './pages/Contact/Contact';
 
 function App() {
 	const dispatch = useDispatch();
@@ -62,6 +63,16 @@ function App() {
 						<Sidebar>
 							<Layout>
 								<EditProfile />
+							</Layout>
+						</Sidebar>
+					}
+				></Route>
+				<Route
+					path="/contact-us"
+					element={
+						<Sidebar>
+							<Layout>
+								<Contact />
 							</Layout>
 						</Sidebar>
 					}
