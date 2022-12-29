@@ -1,10 +1,22 @@
 @use '/src/styles/abstracts' as a;
 
+$sidebar_open: 28vw;
+$sidebar_open_992px_screen: 22vw;
+$sidebar_open_1200px_screen: 21vw;
+$sidebar_open_1400px_screen: 19vw;
+$sidebar_open_1600px_screen: 15vw;
+
+$sidebar_close: 8vw;
+$sidebar_close_992px_screen: 6vw;
+$sidebar_close_1200px_screen: 5vw;
+$sidebar_close_1400px_screen: 4.5vw;
+$sidebar_close_1600px_screen: 3.5vw;
+
 .layout {
 	display: flex;
 	.sidebar {
 		position: static;
-		width: 14rem;
+		width: $sidebar_open;
 		height: 100vh;
 		flex-shrink: 0;
 		background-color: a.$primary-color;
@@ -44,9 +56,76 @@
 		}
 	}
 	.sidebarClosed {
-		width: 3.75rem;
+		width: $sidebar_close;
 	}
 	main {
 		width: 100%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.layout {
+		.sidebar {
+			width: $sidebar_open_992px_screen;
+		}
+		.sidebarClosed {
+			width: $sidebar_close_992px_screen;
+		}
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.layout {
+		.sidebar {
+			width: $sidebar_open_1200px_screen;
+			.topSection {
+				.hamburguerIcon {
+					margin-left: 6rem;
+				}
+				.hamburguerIconClosed {
+					margin-left: 0;
+				}
+			}
+		}
+		.sidebarClosed {
+			width: $sidebar_close_1200px_screen;
+		}
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.layout {
+		.sidebar {
+			width: $sidebar_open_1400px_screen;
+			.topSection {
+				.hamburguerIcon {
+					margin-left: 7.5rem;
+				}
+				.hamburguerIconClosed {
+					margin-left: 0;
+				}
+			}
+		}
+		.sidebarClosed {
+			width: $sidebar_close_1400px_screen;
+		}
+	}
+}
+@media screen and (min-width: 1600px) {
+	.layout {
+		.sidebar {
+			width: $sidebar_open_1600px_screen;
+			.topSection {
+				.hamburguerIcon {
+					margin-left: 7.5rem;
+				}
+				.hamburguerIconClosed {
+					margin-left: 0;
+				}
+			}
+		}
+		.sidebarClosed {
+			width: $sidebar_close_1600px_screen;
+		}
 	}
 }
