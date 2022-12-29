@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import {
 	addItem,
 	selectIsLoading,
@@ -27,7 +26,6 @@ const AddItemModal = () => {
 	const isOpen = useSelector(selectIsOpen);
 
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	const { name, category, quantity, price } = item;
 
@@ -62,8 +60,7 @@ const AddItemModal = () => {
 		console.log(...formData);
 
 		await dispatch(addItem(formData));
-
-		// navigate('/dashboard');
+		await dispatch(SET_ADD_ITEM_MODAL(false));
 	};
 	return (
 		<div
@@ -93,7 +90,11 @@ const AddItemModal = () => {
 				<button onClick={() => dispatch(SET_ADD_ITEM_MODAL(false))}>
 					Cancel
 				</button>
-				<button className={styles.btn__primary} type="submit">
+				<button
+					className={styles.btn__primary}
+					type="submit"
+					onClick={saveItem}
+				>
 					Save item
 				</button>
 			</div>
