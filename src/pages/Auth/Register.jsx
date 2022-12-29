@@ -1,4 +1,3 @@
-import styles from './auth.module.scss';
 import { HiOutlineUserAdd } from 'react-icons/hi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -11,6 +10,8 @@ import {
 	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
 import AuthCard from '../../components/Cards/Auth/AuthCard';
+import styles from './auth.module.scss';
+import '../../styles/buttons.scss';
 
 const Register = () => {
 	const dispatch = useDispatch();
@@ -112,7 +113,10 @@ const Register = () => {
 							/>
 						</div>
 
-						<button className={styles.authButton} type="submit">
+						<button
+							className={`${styles.authButton} primary-button`}
+							type="submit"
+						>
 							Register
 						</button>
 					</form>

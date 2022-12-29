@@ -1,4 +1,3 @@
-import styles from './auth.module.scss';
 import { FiLogIn } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -12,6 +11,8 @@ import {
 } from '../../assets/redux/features/auth/authSlice';
 import { PulseLoader } from 'react-spinners';
 import AuthCard from '../../components/Cards/Auth/AuthCard';
+import styles from './auth.module.scss';
+import '../../styles/buttons.scss';
 
 const Login = () => {
 	const dispatch = useDispatch();
@@ -89,10 +90,13 @@ const Login = () => {
 							</div>
 							<span className={styles.forgotPassword}>
 								<Link to="/forgot-password">
-									<strong>Forgot password?</strong>
+									<p>Forgot password?</p>
 								</Link>
 							</span>
-							<button className={styles.authButton} type="submit">
+							<button
+								className={`${styles.authButton} primary-button`}
+								type="submit"
+							>
 								Log in
 							</button>
 						</form>

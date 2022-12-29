@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { resetPassword } from '../../utils/api';
-import styles from './auth.module.scss';
 import AuthCard from '../../components/Cards/Auth/AuthCard';
+import styles from './auth.module.scss';
+import '../../styles/buttons.scss';
 
 const Reset = () => {
 	const navigate = useNavigate();
@@ -77,7 +78,10 @@ const Reset = () => {
 							/>
 						</div>
 
-						<button className={styles.authButton} type="submit">
+						<button
+							className={`${styles.authButton} primary-button`}
+							type="submit"
+						>
 							Reset Password
 						</button>
 					</form>

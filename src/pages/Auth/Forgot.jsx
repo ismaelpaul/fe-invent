@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { forgotPassword } from '../../utils/api';
 import { validateEmail } from '../../utils/utils';
-import styles from './auth.module.scss';
 import AuthCard from '../../components/Cards/Auth/AuthCard';
+import styles from './auth.module.scss';
+import '../../styles/buttons.scss';
 
 const Forgot = () => {
 	const [email, setEmail] = useState('');
@@ -48,7 +49,10 @@ const Forgot = () => {
 							/>
 						</div>
 
-						<button className={styles.authButton} type="submit">
+						<button
+							className={`${styles.authButton} primary-button`}
+							type="submit"
+						>
 							Send Reset Link
 						</button>
 					</form>
