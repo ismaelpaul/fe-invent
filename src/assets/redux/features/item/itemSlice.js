@@ -10,6 +10,8 @@ const initialState = {
 	isSuccess: false,
 	isLoading: false,
 	message: '',
+	totalStoreValue: 0,
+	itemsOutOfStock: 0,
 };
 
 export const addItem = createAsyncThunk(
@@ -47,7 +49,30 @@ const itemSlice = createSlice({
 	initialState,
 	reducers: {
 		CALC_STORE_VALUE(state, action) {
-			console.log('store value');
+			const items = action.payload;
+			const allItemsValue = [];
+			items.map((item) => {
+				const { price, quantity } = item;
+				const itemValue = price * quantity;
+				return allItemsValue.push(itemValue);
+			});
+			const totalValue = allItemsValue.reduce((a, b) => {
+				return a + b;
+			}, 0);
+			state.totalStoreValue = totalValue;
+		},
+		CALC_OUT_OF_STOCK(state, action) {
+			const items = action.payload;
+			const allItemsOutOfStock = [];
+			items.filter((item) => {
+				const { quantity } = item;
+				if (quantity == 0) {
+					return allItemsOutOfStock.push(quantity);
+				}
+			});
+
+			const totalItems = allItemsOutOfStock.length;
+			state.totalItemsOutOfStock = totalItems;
 		},
 		SET_ADD_ITEM_MODAL(state, action) {
 			state.isOpenAddItemModal = action.payload;
@@ -89,9 +114,12 @@ const itemSlice = createSlice({
 	},
 });
 
-export const { CALC_STORE_VALUE, SET_ADD_ITEM_MODAL } = itemSlice.actions;
+export const { CALC_STORE_VALUE, CALC_OUT_OF_STOCK, SET_ADD_ITEM_MODAL } =
+	itemSlice.actions;
 
 export const selectIsLoading = (state) => state.item.isLoading;
 export const selectIsOpenAddItemModal = (state) =>
 	state.item.isOpenAddItemModal;
+export const selectTotalStoreValue = (state) => state.item.totalStoreValue;
+export const selectItemsOutOfStock = (state) => state.item.totalItemsOutOfStock;
 export default itemSlice.reducer;
