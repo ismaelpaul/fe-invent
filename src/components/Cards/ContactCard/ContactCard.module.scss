@@ -1,8 +1,35 @@
 .contact__card {
-	width: 50%;
+	width: 70%;
 	border: 1px solid transparent;
 	border-radius: 0.3rem;
 	box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	background-color: rgb(255, 255, 255);
+}
+
+@media screen and (min-width: 768px) {
+	.contact__card {
+		width: 65%;
+	}
+}
+@media screen and (min-width: 992px) {
+	.contact__card {
+		width: 55%;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.contact__card {
+		width: 40%;
+	}
+}
+@media screen and (min-width: 1400px) {
+	.contact__card {
+		width: 30%;
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.contact__card {
+		width: 25%;
+	}
 }
