@@ -1,5 +1,6 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import './Quill.scss';
 import styles from './ItemForm.module.scss';
 
 const ItemForm = ({
@@ -72,16 +73,17 @@ const ItemForm = ({
 							onChange={handleInputChange}
 						/>
 					</div>
-					<div className={styles.form__description}>
-						<label>Description</label>
-						<ReactQuill
-							theme="snow"
-							value={description}
-							onChange={setDescription}
-							modules={ItemForm.modules}
-							formats={ItemForm.formats}
-						/>
-					</div>
+				</div>
+				<div className={styles.form__description}>
+					<label>Description</label>
+					<ReactQuill
+						placeholder="Write your description..."
+						theme="snow"
+						value={description}
+						onChange={setDescription}
+						modules={ItemForm.modules}
+						formats={ItemForm.formats}
+					/>
 				</div>
 			</form>
 		</div>
@@ -90,7 +92,6 @@ const ItemForm = ({
 
 ItemForm.modules = {
 	toolbar: [
-		[{ header: '1' }, { header: '2' }, { font: [] }],
 		[{ size: [] }],
 		['bold', 'italic', 'underline', 'strike', 'blockquote'],
 		[{ align: [] }],
