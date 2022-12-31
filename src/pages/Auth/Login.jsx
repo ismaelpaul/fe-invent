@@ -60,7 +60,7 @@ const Login = () => {
 		}
 	};
 	return (
-		<div className={`container ${styles.auth}`}>
+		<div className={styles.auth}>
 			{isLoading ? (
 				<PulseLoader color="#252f3c" size={11} />
 			) : (
