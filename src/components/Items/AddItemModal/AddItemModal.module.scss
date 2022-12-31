@@ -19,7 +19,7 @@ $sidebar_close_1600px_screen: 3.5vw;
 
 	.modal__container {
 		font-family: a.$roboto;
-		max-width: 60%;
+		max-width: 80%;
 		padding: 1.5rem;
 		background-color: rgb(255, 255, 255);
 		border-radius: 0.3rem;
@@ -37,6 +37,12 @@ $sidebar_close_1600px_screen: 3.5vw;
 			font-size: 1.5rem;
 			margin-left: auto;
 		}
+		.modal__buttons {
+			padding-top: 1rem;
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+		}
 	}
 }
 
@@ -49,15 +55,32 @@ $sidebar_close_1600px_screen: 3.5vw;
 @media screen and (min-width: 1200px) {
 	.modal__background {
 		width: (100vw - $sidebar_close_1200px_screen);
+		.modal__container {
+			max-width: 65%;
+		}
 	}
 }
 @media screen and (min-width: 1400px) {
 	.modal__background {
 		width: (100vw - $sidebar_close_1400px_screen);
+		.modal__container {
+			max-width: 55%;
+		}
 	}
 }
 @media screen and (min-width: 1600px) {
 	.modal__background {
 		width: (100vw - $sidebar_close_1600px_screen);
+		.modal__container {
+			max-width: 45%;
+		}
+	}
+}
+@media screen and (min-width: 1900px) {
+	.modal__background {
+		width: (100vw - $sidebar_close_1600px_screen);
+		.modal__container {
+			max-width: 40%;
+		}
 	}
 }
