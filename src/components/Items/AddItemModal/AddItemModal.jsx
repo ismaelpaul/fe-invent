@@ -8,6 +8,7 @@ import {
 import { selectIsOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import ItemForm from '../ItemForm/ItemForm';
 import { GrFormClose } from 'react-icons/gr';
+import '../../../styles/buttons.scss';
 import styles from './AddItemModal.module.scss';
 
 const initialState = {
@@ -87,16 +88,17 @@ const AddItemModal = () => {
 					handleImageChange={handleImageChange}
 					saveItem={saveItem}
 				/>
-				<button onClick={() => dispatch(SET_ADD_ITEM_MODAL(false))}>
-					Cancel
-				</button>
-				<button
-					className={styles.btn__primary}
-					type="submit"
-					onClick={saveItem}
-				>
-					Save item
-				</button>
+				<div className={styles.modal__buttons}>
+					<button
+						className="secondary-button"
+						onClick={() => dispatch(SET_ADD_ITEM_MODAL(false))}
+					>
+						Cancel
+					</button>
+					<button className="primary-button" type="submit" onClick={saveItem}>
+						Save item
+					</button>
+				</div>
 			</div>
 		</div>
 	);
