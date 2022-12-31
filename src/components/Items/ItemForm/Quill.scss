@@ -1,0 +1,25 @@
+@use '/src/styles/abstracts' as a;
+
+.quill {
+	.ql-toolbar {
+		background-color: rgb(239, 239, 239);
+		border-top-left-radius: 0.3rem;
+		border-top-right-radius: 0.3rem;
+	}
+	.ql-container {
+		height: 8rem;
+		border-bottom-left-radius: 0.3rem;
+		border-bottom-right-radius: 0.3rem;
+	}
+	.ql-editor {
+		overflow: scroll;
+	}
+}
+
+// @media screen and (min-width: 992px) {
+// 	.quill {
+// 		.ql-container {
+// 			height: 8rem;
+// 		}
+// 	}
+// }
