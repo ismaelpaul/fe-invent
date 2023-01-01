@@ -4,8 +4,10 @@ import ContactCard from '../../components/Cards/ContactCard/ContactCard';
 import { sendContactMessage } from '../../utils/api';
 import styles from './Contact.module.scss';
 import '../../styles/buttons.scss';
+import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 
 const Contact = () => {
+	useRedirectLoggedOutUser('/login');
 	const [subject, setSubject] = useState('');
 	const [message, setMessage] = useState('');
 

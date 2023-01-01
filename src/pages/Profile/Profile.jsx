@@ -8,7 +8,7 @@ import { BiMessageSquareEdit } from 'react-icons/bi';
 import styles from './Profile.module.scss';
 
 const Profile = () => {
-	useRedirectLoggedOutUser();
+	useRedirectLoggedOutUser('/login');
 
 	const user = useSelector(selectUser);
 
