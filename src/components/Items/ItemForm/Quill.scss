@@ -7,19 +7,30 @@
 		border-top-right-radius: 0.3rem;
 	}
 	.ql-container {
-		height: 8rem;
+		height: 4rem;
+		font-family: a.$roboto;
+		font-size: 0.9rem;
+		font-style: normal;
 		border-bottom-left-radius: 0.3rem;
 		border-bottom-right-radius: 0.3rem;
+		overflow-y: auto;
 	}
 	.ql-editor {
-		overflow: scroll;
+		max-width: 37rem;
 	}
 }
 
-// @media screen and (min-width: 992px) {
-// 	.quill {
-// 		.ql-container {
-// 			height: 8rem;
-// 		}
-// 	}
-// }
+@media screen and (min-width: 768px) {
+	.quill {
+		.ql-container {
+			height: 5rem;
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	.quill {
+		.ql-editor {
+			max-width: 47rem;
+		}
+	}
+}
