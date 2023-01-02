@@ -5,7 +5,6 @@ import styles from './ItemForm.module.scss';
 
 const ItemForm = ({
 	item,
-	itemImage,
 	imagePreview,
 	description,
 	setDescription,
@@ -77,7 +76,7 @@ const ItemForm = ({
 				<div className={styles.form__description}>
 					<label>Description</label>
 					<ReactQuill
-						placeholder="Write your description..."
+						placeholder="Write item's description..."
 						theme="snow"
 						value={description}
 						onChange={setDescription}
