@@ -30,7 +30,10 @@
 			transition: all 0.3s;
 
 			img {
-				width: 100%;
+				width: auto;
+				height: auto;
+				max-width: 14rem;
+				max-height: 10rem;
 			}
 		}
 	}
@@ -69,14 +72,14 @@
 	}
 }
 
-@media screen and (min-width: 992px) {
-	.form__items {
-		.card__image {
-			.image__preview {
-				img {
-					width: 80%;
-				}
-			}
-		}
-	}
-}
+// @media screen and (min-width: 992px) {
+// 	.form__items {
+// 		.card__image {
+// 			.image__preview {
+// 				img {
+// 					width: 80%;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
