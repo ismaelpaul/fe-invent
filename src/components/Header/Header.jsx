@@ -34,7 +34,7 @@ const Header = () => {
 			dispatch(SET_USER(data));
 		}
 		getUserData();
-	}, [dispatch]);
+	}, [user]);
 
 	return (
 		<div className={styles.header}>
