@@ -39,7 +39,7 @@ const Dashboard = () => {
 			{isOpen ? <AddItemModal /> : null}
 
 			<ItemsStats items={items} />
-			<ItemsList />
+			<ItemsList items={items} isLoading={isLoading} />
 		</div>
 	);
 };
