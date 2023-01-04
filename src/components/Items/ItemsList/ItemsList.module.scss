@@ -6,7 +6,7 @@
 		border: 1px solid a.$hr;
 	}
 	.list__topSection {
-		padding: 1.5rem 0;
+		padding: 3rem 0 1.5rem 0;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -60,13 +60,18 @@
 		left: 0;
 	}
 
-	.pagination .page__num {
+	.pagination,
+	.page__num,
+	.page__next__prev {
 		font-family: a.$roboto;
 		padding: 5px 10px;
 		cursor: pointer;
 		border-radius: 3px;
-		border: 1px solid a.$primary-color;
 		margin: 2px;
+	}
+
+	.pagination .page__num {
+		border: 1px solid a.$primary-color;
 	}
 
 	.page__active {
@@ -80,7 +85,28 @@
 	}
 
 	.page__disabled__link {
-		color: #ccc;
+		color: rgb(182, 182, 182);
 		cursor: none;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.list__container {
+		padding: 2rem 3.5rem;
+	}
+}
+@media screen and (min-width: 1400px) {
+	.list__container {
+		padding: 2rem 4.5rem;
+	}
+}
+@media screen and (min-width: 1600px) {
+	.list__container {
+		padding: 2rem 5.5rem;
+	}
+}
+@media screen and (min-width: 1900px) {
+	.list__container {
+		padding: 2rem 7.5rem;
 	}
 }

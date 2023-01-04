@@ -19,3 +19,30 @@
 		text-indent: 2rem;
 	}
 }
+
+@media screen and (min-width: 992px) {
+	.search {
+		max-width: 50%;
+		.search__icon {
+			left: 2.5rem;
+		}
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.search {
+		max-width: 50%;
+		.search__icon {
+			left: 3rem;
+		}
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.search {
+		max-width: 40%;
+		.search__icon {
+			left: 3rem;
+		}
+	}
+}
