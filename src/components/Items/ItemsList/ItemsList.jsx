@@ -107,16 +107,16 @@ const ItemsList = ({ items, isLoading }) => {
 			</div>
 			<ReactPaginate
 				breakLabel="..."
-				nextLabel="Next"
+				nextLabel="Next >"
 				onPageChange={handlePageClick}
 				pageRangeDisplayed={3}
 				pageCount={pageCount}
-				previousLabel="Prev"
+				previousLabel="< Prev"
 				renderOnZeroPageCount={null}
 				containerClassName={styles.pagination}
 				pageLinkClassName={styles.page__num}
-				previousLinkClassName={styles.page__num}
-				nextLinkClassName={styles.page__num}
+				previousLinkClassName={styles.page__next__prev}
+				nextLinkClassName={styles.page__next__prev}
 				activeLinkClassName={styles.page__active}
 				disabledClassName={styles.page__disabled}
 				disabledLinkClassName={styles.page__disabled__link}
