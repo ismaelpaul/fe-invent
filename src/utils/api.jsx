@@ -124,6 +124,11 @@ export const getAllItems = async () => {
 	return response.data;
 };
 
+export const deleteItem = async (id) => {
+	const response = await inventApi.delete(`/products/${id}`);
+	return response.data;
+};
+
 export const updateUserProfile = async (formData) => {
 	try {
 		const response = await inventApi.patch('/user/update-profile', formData);
