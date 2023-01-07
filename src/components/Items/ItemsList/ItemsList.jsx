@@ -5,29 +5,48 @@ import {
 	FILTER_ITEMS,
 	selectFilteredItems,
 } from '../../../assets/redux/features/item/filterSlice';
-import { SET_ADD_ITEM_MODAL } from '../../../assets/redux/features/item/itemSlice';
+import {
+	selectItemID,
+	SET_ADD_ITEM_MODAL,
+	SET_DELETE_ITEM_ID,
+	SET_DELETE_ITEM_MODAL,
+} from '../../../assets/redux/features/item/itemSlice';
 import { SET_SIDEBAR } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import { shortenText } from '../../../utils/utils';
 import Moment from 'react-moment';
+import { BiMessageSquareEdit } from 'react-icons/bi';
+import { BsTrash } from 'react-icons/bs';
+import ReactDOMServer from 'react-dom/server';
 import SearchItems from '../../SearchItems/SearchItems';
+import ReactPaginate from 'react-paginate';
 import styles from './ItemsList.module.scss';
 import '../../../styles/buttons.scss';
-import ReactPaginate from 'react-paginate';
 
 const ItemsList = ({ items, isLoading }) => {
 	const [search, setSearch] = useState('');
 	const [currentItems, setCurrentItems] = useState([]);
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
+
 	const itemsPerPage = 10;
 
 	const filteredItems = useSelector(selectFilteredItems);
 
 	const dispatch = useDispatch();
 
-	const handleOpenModal = () => {
+	const handleOpenAddItemModal = () => {
 		dispatch(SET_ADD_ITEM_MODAL(true));
 		dispatch(SET_SIDEBAR(false));
+	};
+	const handleOpenDeleteItemModal = (id) => {
+		dispatch(SET_DELETE_ITEM_MODAL(true));
+		dispatch(SET_SIDEBAR(false));
+		dispatch(SET_DELETE_ITEM_ID(id));
+	};
+
+	const handlePageClick = (e) => {
+		const newOffset = (e.selected * itemsPerPage) % filteredItems.length;
+		setItemOffset(newOffset);
 	};
 
 	useEffect(() => {
@@ -36,11 +55,6 @@ const ItemsList = ({ items, isLoading }) => {
 		setCurrentItems(filteredItems.slice(itemOffset, endOffset));
 		setPageCount(Math.ceil(filteredItems.length / itemsPerPage));
 	}, [itemOffset, itemsPerPage, filteredItems]);
-
-	const handlePageClick = (e) => {
-		const newOffset = (e.selected * itemsPerPage) % filteredItems.length;
-		setItemOffset(newOffset);
-	};
 
 	useEffect(() => {
 		dispatch(FILTER_ITEMS({ items, search }));
@@ -55,7 +69,7 @@ const ItemsList = ({ items, isLoading }) => {
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}
 				/>
-				<button className="primary-button" onClick={handleOpenModal}>
+				<button className="primary-button" onClick={handleOpenAddItemModal}>
 					+ Add Item
 				</button>
 			</div>
@@ -67,7 +81,7 @@ const ItemsList = ({ items, isLoading }) => {
 				) : (
 					<table>
 						<thead>
-							<tr>
+							<tr className={styles.list__title}>
 								<th>Number</th>
 								<th>Name</th>
 								<th>Category</th>
@@ -82,7 +96,7 @@ const ItemsList = ({ items, isLoading }) => {
 								const { _id, name, category, price, quantity, createdAt } =
 									item;
 								return (
-									<tr key={_id}>
+									<tr className={styles.list__info} key={_id}>
 										<td>{index + 1 + '.'}</td>
 										<td>{shortenText(name, 15)}</td>
 										<td>{category}</td>
@@ -96,7 +110,17 @@ const ItemsList = ({ items, isLoading }) => {
 											{price * quantity}
 										</td>
 										<td>
-											<Moment format="DD/MM/YY">{createdAt}</Moment>
+											<Moment format="DD/MM/YY" className={styles.list__date}>
+												{createdAt}
+											</Moment>
+											<>
+												<BiMessageSquareEdit className={styles.list__icons} />
+												<BsTrash
+													color="#fc0330"
+													className={styles.list__icons}
+													onClick={() => handleOpenDeleteItemModal(_id)}
+												/>
+											</>
 										</td>
 									</tr>
 								);

@@ -19,17 +19,22 @@
 	}
 	.list__table {
 		font-family: a.$roboto;
+		.list__title {
+			height: 2rem;
+		}
+		.list__info {
+			height: 2.5rem;
+		}
 		table {
 			border-collapse: collapse;
 			width: 100%;
-
 			font-size: 1rem;
 		}
 		th,
 		td {
 			vertical-align: top;
 			text-align: left;
-			padding: 8px;
+			padding: 0.5rem;
 		}
 		th {
 			font-weight: a.$regular;
@@ -37,6 +42,7 @@
 			color: white;
 		}
 		tr {
+			max-height: 10rem;
 			border-bottom: 1px solid #ccc;
 		}
 
@@ -45,6 +51,23 @@
 		}
 		tr:nth-child(even) {
 			background-color: #fff;
+		}
+		.list__icons {
+			display: none;
+			font-size: 1.2rem;
+			margin-right: 0.9rem;
+			cursor: pointer;
+		}
+
+		tr:hover {
+			background-color: #ccc;
+			.list__icons {
+				display: inline-block;
+			}
+
+			.list__date {
+				display: none;
+			}
 		}
 	}
 	.pagination {
