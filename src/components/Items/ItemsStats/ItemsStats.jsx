@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BsCart, BsCartX } from 'react-icons/bs';
-import { MdAttachMoney } from 'react-icons/md';
+import { BsCurrencyDollar } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	CALC_OUT_OF_STOCK,
@@ -14,7 +14,7 @@ import styles from './ItemsStats.module.scss';
 
 const cartIcon = <BsCart color="#6D1BE7" />;
 const outOfStockIcon = <BsCartX color="#FA3B3B" />;
-const storeValueIcon = <MdAttachMoney color="#009764" />;
+const storeValueIcon = <BsCurrencyDollar color="#009764" />;
 
 const ItemsStats = ({ items }) => {
 	const dispatch = useDispatch();
