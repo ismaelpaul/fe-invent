@@ -5,7 +5,8 @@ import { addNewItem, deleteItem, getAllItems } from '../../../../utils/api';
 const initialState = {
 	item: null,
 	items: [],
-	isOpenModal: false,
+	isAddItemModalOpen: false,
+	isDeleteItemModalOpen: false,
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
@@ -44,7 +45,7 @@ export const getItems = createAsyncThunk(
 	}
 );
 
-export const deleteItem = createAsyncThunk(
+export const deleteSingleItem = createAsyncThunk(
 	'products/delete',
 	async (id, thunkAPI) => {
 		try {
@@ -90,7 +91,13 @@ const itemSlice = createSlice({
 			state.totalItemsOutOfStock = totalItems;
 		},
 		SET_ADD_ITEM_MODAL(state, action) {
-			state.isOpenAddItemModal = action.payload;
+			state.isAddItemModalOpen = action.payload;
+		},
+		SET_DELETE_ITEM_MODAL(state, action) {
+			state.isDeleteItemModalOpen = action.payload;
+		},
+		SET_DELETE_ITEM_ID(state, action) {
+			state.itemID = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
@@ -126,16 +133,16 @@ const itemSlice = createSlice({
 				state.message = action.payload;
 				toast.error(action.payload);
 			})
-			.addCase(deleteItem.pending, (state) => {
+			.addCase(deleteSingleItem.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(deleteItem.fulfilled, (state) => {
+			.addCase(deleteSingleItem.fulfilled, (state) => {
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.isError = false;
 				toast.success('Item successfully deleted');
 			})
-			.addCase(deleteItem.rejected, (state, action) => {
+			.addCase(deleteSingleItem.rejected, (state, action) => {
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
@@ -144,12 +151,21 @@ const itemSlice = createSlice({
 	},
 });
 
-export const { CALC_STORE_VALUE, CALC_OUT_OF_STOCK, SET_ADD_ITEM_MODAL } =
-	itemSlice.actions;
+export const {
+	CALC_STORE_VALUE,
+	CALC_OUT_OF_STOCK,
+	SET_ADD_ITEM_MODAL,
+	SET_DELETE_ITEM_MODAL,
+	SET_DELETE_ITEM_ID,
+} = itemSlice.actions;
 
 export const selectIsLoading = (state) => state.item.isLoading;
 export const selectIsOpenAddItemModal = (state) =>
-	state.item.isOpenAddItemModal;
+	state.item.isAddItemModalOpen;
+export const selectIsOpenDeleteItemModal = (state) =>
+	state.item.isDeleteItemModalOpen;
+export const selectItemID = (state) => state.item.itemID;
 export const selectTotalStoreValue = (state) => state.item.totalStoreValue;
 export const selectItemsOutOfStock = (state) => state.item.totalItemsOutOfStock;
+
 export default itemSlice.reducer;
