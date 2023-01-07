@@ -5,7 +5,7 @@ import {
 	selectIsLoading,
 	SET_ADD_ITEM_MODAL,
 } from '../../../assets/redux/features/item/itemSlice';
-import { selectIsOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
+import { selectIsSidebarOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import ItemForm from '../ItemForm/ItemForm';
 import { GrFormClose } from 'react-icons/gr';
 import '../../../styles/buttons.scss';
@@ -24,7 +24,7 @@ const AddItemModal = () => {
 	const [imagePreview, setImagePreview] = useState(null);
 	const [description, setDescription] = useState('');
 
-	const isOpen = useSelector(selectIsOpen);
+	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 
 	const dispatch = useDispatch();
 
@@ -66,7 +66,7 @@ const AddItemModal = () => {
 	return (
 		<div
 			className={
-				isOpen
+				isSidebarOpen
 					? `${styles.modal__background} ${styles.modal__sidebarOpen}`
 					: `${styles.modal__background} ${styles.modal__sidebarClose}`
 			}
