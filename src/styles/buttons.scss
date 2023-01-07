@@ -1,0 +1,39 @@
+@use '/src/styles/abstracts' as a;
+
+.btn {
+	width: 10rem;
+	padding: 0.5rem 1.5rem;
+	font-family: a.$roboto;
+	border-radius: 0.3rem;
+	font-size: 1rem;
+	font-weight: a.$regular;
+	border: 1px solid a.$primary-color;
+	cursor: pointer;
+}
+
+.primary-button {
+	@extend .btn;
+	background-color: a.$primary-color;
+	color: white;
+}
+
+.secondary-button {
+	@extend .btn;
+	background-color: transparent;
+
+	color: a.$primary-color;
+}
+
+.primary-button-delete {
+	@extend .btn;
+	background-color: a.$delete;
+	border: 1px solid a.$delete;
+	color: white;
+}
+
+.primary-button-home {
+	@extend .btn;
+	width: 7rem;
+	background-color: white;
+	color: a.$primary-color;
+}
