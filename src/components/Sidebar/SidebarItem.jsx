@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './SidebarItem.module.scss';
 
-const SidebarItem = ({ item, isOpen }) => {
+const SidebarItem = ({ item, isSidebarOpen }) => {
 	const activeSublink = ({ isActive }) => (isActive ? `${styles.active}` : '');
 
 	return (
@@ -9,7 +9,7 @@ const SidebarItem = ({ item, isOpen }) => {
 			<div className={styles.sidebarTitle}>
 				<span>
 					{item.icon && <div className={styles.icon}>{item.icon}</div>}
-					{isOpen && <div>{item.title}</div>}
+					{isSidebarOpen && <div>{item.title}</div>}
 				</span>
 			</div>
 		</NavLink>

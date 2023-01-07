@@ -5,7 +5,7 @@ import { CgMenu } from 'react-icons/cg';
 import SidebarItem from './SidebarItem';
 import { useNavigate } from 'react-router-dom';
 import {
-	selectIsOpen,
+	selectIsSidebarOpen,
 	SET_SIDEBAR,
 } from '../../assets/redux/features/sidebar/sidebarSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,10 +14,10 @@ import { selectIsOpenAddItemModal } from '../../assets/redux/features/item/itemS
 const Sidebar = ({ children }) => {
 	const dispatch = useDispatch();
 
-	const isOpen = useSelector(selectIsOpen);
+	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 	const isAddItemModalOpen = useSelector(selectIsOpenAddItemModal);
 
-	const toggleSidebar = () => dispatch(SET_SIDEBAR(!isOpen));
+	const toggleSidebar = () => dispatch(SET_SIDEBAR(!isSidebarOpen));
 	const navigate = useNavigate();
 
 	const goHome = () => {
@@ -28,7 +28,7 @@ const Sidebar = ({ children }) => {
 		<div className={styles.layout}>
 			<div
 				className={
-					isOpen
+					isSidebarOpen
 						? `${styles.sidebar}`
 						: `${styles.sidebar} ${styles.sidebarClosed}`
 				}
@@ -36,14 +36,14 @@ const Sidebar = ({ children }) => {
 				<div className={styles.topSection}>
 					<div
 						className={styles.logo}
-						style={{ display: isOpen ? 'flex' : 'none' }}
+						style={{ display: isSidebarOpen ? 'flex' : 'none' }}
 					>
 						<MdOutlineInventory2 onClick={goHome} />
 						<p>Invent</p>
 					</div>
 					<div
 						className={
-							isOpen
+							isSidebarOpen
 								? `${styles.hamburguerIcon}`
 								: `${styles.hamburguerIcon} ${styles.hamburguerIconClosed}`
 						}
@@ -52,7 +52,13 @@ const Sidebar = ({ children }) => {
 					</div>
 				</div>
 				{sidebar.map((item, index) => {
-					return <SidebarItem key={index} item={item} isOpen={isOpen} />;
+					return (
+						<SidebarItem
+							key={index}
+							item={item}
+							isSidebarOpen={isSidebarOpen}
+						/>
+					);
 				})}
 			</div>
 
