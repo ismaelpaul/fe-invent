@@ -6,9 +6,11 @@ import {
 	getItems,
 	selectIsOpenAddItemModal,
 	selectIsOpenDeleteItemModal,
+	selectisOpenItemDetailsModal,
 } from '../../assets/redux/features/item/itemSlice';
 import AddItemModal from '../../components/Items/AddItemModal/AddItemModal';
 import DeleteItemModal from '../../components/Items/DeleteItemModal/DeleteItemModal';
+import ItemDetailsModal from '../../components/Items/ItemDetailsModal/ItemDetailsModal';
 import ItemsList from '../../components/Items/ItemsList/ItemsList';
 import ItemsStats from '../../components/Items/ItemsStats/ItemsStats';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
@@ -22,6 +24,7 @@ const Dashboard = () => {
 
 	const isAddItemModalOpen = useSelector(selectIsOpenAddItemModal);
 	const isDeleteModalOpen = useSelector(selectIsOpenDeleteItemModal);
+	const isItemDetailsModalOpen = useSelector(selectisOpenItemDetailsModal);
 
 	const { items, isLoading, isError, message } = useSelector(
 		(state) => state.item
@@ -41,6 +44,7 @@ const Dashboard = () => {
 		<div>
 			{isAddItemModalOpen ? <AddItemModal /> : null}
 			{isDeleteModalOpen ? <DeleteItemModal /> : null}
+			{isItemDetailsModalOpen ? <ItemDetailsModal /> : null}
 
 			<ItemsStats items={items} />
 			<ItemsList items={items} isLoading={isLoading} />
