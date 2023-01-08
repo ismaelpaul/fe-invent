@@ -120,7 +120,11 @@ export const addNewItem = async (newItem) => {
 
 export const getAllItems = async () => {
 	const response = await inventApi.get('/products');
+	return response.data;
+};
 
+export const getSingleItem = async (id) => {
+	const response = await inventApi.get(`/products/${id}`);
 	return response.data;
 };
 
