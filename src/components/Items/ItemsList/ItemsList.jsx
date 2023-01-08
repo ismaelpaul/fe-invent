@@ -6,17 +6,16 @@ import {
 	selectFilteredItems,
 } from '../../../assets/redux/features/item/filterSlice';
 import {
-	selectItemID,
 	SET_ADD_ITEM_MODAL,
-	SET_DELETE_ITEM_ID,
+	SET_ITEM_ID,
 	SET_DELETE_ITEM_MODAL,
+	SET_ITEM_DETAILS_MODAL,
 } from '../../../assets/redux/features/item/itemSlice';
 import { SET_SIDEBAR } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import { shortenText } from '../../../utils/utils';
 import Moment from 'react-moment';
 import { BiMessageSquareEdit } from 'react-icons/bi';
 import { BsTrash } from 'react-icons/bs';
-import ReactDOMServer from 'react-dom/server';
 import SearchItems from '../../SearchItems/SearchItems';
 import ReactPaginate from 'react-paginate';
 import styles from './ItemsList.module.scss';
@@ -34,6 +33,12 @@ const ItemsList = ({ items, isLoading }) => {
 
 	const dispatch = useDispatch();
 
+	const handleClickOnRow = (id) => {
+		dispatch(SET_ITEM_DETAILS_MODAL(true));
+		dispatch(SET_ITEM_ID(id));
+		dispatch(SET_SIDEBAR(false));
+	};
+
 	const handleOpenAddItemModal = () => {
 		dispatch(SET_ADD_ITEM_MODAL(true));
 		dispatch(SET_SIDEBAR(false));
@@ -41,7 +46,7 @@ const ItemsList = ({ items, isLoading }) => {
 	const handleOpenDeleteItemModal = (id) => {
 		dispatch(SET_DELETE_ITEM_MODAL(true));
 		dispatch(SET_SIDEBAR(false));
-		dispatch(SET_DELETE_ITEM_ID(id));
+		dispatch(SET_ITEM_ID(id));
 	};
 
 	const handlePageClick = (e) => {
@@ -74,61 +79,69 @@ const ItemsList = ({ items, isLoading }) => {
 				</button>
 			</div>
 
-			{isLoading && <PulseLoader />}
-			<div className={styles.list__table}>
-				{!isLoading && items.length === 0 ? (
-					<p>No items found, please add an item.</p>
-				) : (
-					<table>
-						<thead>
-							<tr className={styles.list__title}>
-								<th>Number</th>
-								<th>Name</th>
-								<th>Category</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Value</th>
-								<th>Date</th>
-							</tr>
-						</thead>
-						<tbody>
-							{currentItems.map((item, index) => {
-								const { _id, name, category, price, quantity, createdAt } =
-									item;
-								return (
-									<tr className={styles.list__info} key={_id}>
-										<td>{index + 1 + '.'}</td>
-										<td>{shortenText(name, 15)}</td>
-										<td>{category}</td>
-										<td>
-											{'£'}
-											{price}
-										</td>
-										<td>{quantity}</td>
-										<td>
-											{'£'}
-											{price * quantity}
-										</td>
-										<td>
-											<Moment format="DD/MM/YY" className={styles.list__date}>
-												{createdAt}
-											</Moment>
-											<>
-												<BiMessageSquareEdit className={styles.list__icons} />
-												<BsTrash
-													color="#fc0330"
-													className={styles.list__icons}
-													onClick={() => handleOpenDeleteItemModal(_id)}
-												/>
-											</>
-										</td>
-									</tr>
-								);
-							})}
-						</tbody>
-					</table>
-				)}
-			</div>
+			{isLoading ? (
+				<PulseLoader />
+			) : (
+				<div className={styles.list__table}>
+					{!isLoading && items.length === 0 ? (
+						<p>No items found, please add an item.</p>
+					) : (
+						<table>
+							<thead>
+								<tr className={styles.list__title}>
+									<th>Number</th>
+									<th>Name</th>
+									<th>Category</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Value</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								{currentItems.map((item, index) => {
+									const { _id, name, category, price, quantity, createdAt } =
+										item;
+									return (
+										<tr className={styles.list__info} key={_id}>
+											<td onClick={() => handleClickOnRow(_id)}>
+												{index + 1 + '.'}
+											</td>
+											<td onClick={() => handleClickOnRow(_id)}>
+												{shortenText(name, 15)}
+											</td>
+											<td onClick={() => handleClickOnRow(_id)}>{category}</td>
+											<td onClick={() => handleClickOnRow(_id)}>
+												{'£'}
+												{price}
+											</td>
+											<td onClick={() => handleClickOnRow(_id)}>{quantity}</td>
+											<td onClick={() => handleClickOnRow(_id)}>
+												{'£'}
+												{price * quantity}
+											</td>
+											<td>
+												<Moment format="DD/MM/YY" className={styles.list__date}>
+													{createdAt}
+												</Moment>
+												<>
+													<BiMessageSquareEdit className={styles.list__icons} />
+													<BsTrash
+														color="#fc0330"
+														className={styles.list__icons}
+														onClick={() => handleOpenDeleteItemModal(_id)}
+													/>
+												</>
+											</td>
+										</tr>
+									);
+								})}
+							</tbody>
+						</table>
+					)}
+				</div>
+			)}
+
 			<ReactPaginate
 				breakLabel="..."
 				nextLabel="Next >"
