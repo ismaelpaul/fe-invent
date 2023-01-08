@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { addNewItem, deleteItem, getAllItems } from '../../../../utils/api';
+import {
+	addNewItem,
+	deleteItem,
+	getAllItems,
+	getSingleItem,
+} from '../../../../utils/api';
 
 const initialState = {
 	item: null,
 	items: [],
 	isAddItemModalOpen: false,
 	isDeleteItemModalOpen: false,
+	isItemDetailsModalOpen: false,
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
@@ -35,6 +41,20 @@ export const getItems = createAsyncThunk(
 	async (_, thunkAPI) => {
 		try {
 			return await getAllItems();
+		} catch (error) {
+			const message =
+				(error.response && error.response.data && error.response.message) ||
+				error.message ||
+				error.toString();
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+export const getItem = createAsyncThunk(
+	'products/getSingleItem',
+	async (id, thunkAPI) => {
+		try {
+			return await getSingleItem(id);
 		} catch (error) {
 			const message =
 				(error.response && error.response.data && error.response.message) ||
@@ -96,7 +116,10 @@ const itemSlice = createSlice({
 		SET_DELETE_ITEM_MODAL(state, action) {
 			state.isDeleteItemModalOpen = action.payload;
 		},
-		SET_DELETE_ITEM_ID(state, action) {
+		SET_ITEM_DETAILS_MODAL(state, action) {
+			state.isItemDetailsModalOpen = action.payload;
+		},
+		SET_ITEM_ID(state, action) {
 			state.itemID = action.payload;
 		},
 	},
@@ -147,6 +170,21 @@ const itemSlice = createSlice({
 				state.isError = true;
 				state.message = action.payload;
 				toast.error(action.payload);
+			})
+			.addCase(getItem.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(getItem.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.isError = false;
+				state.item = action.payload;
+			})
+			.addCase(getItem.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
+				toast.error(action.payload);
 			});
 	},
 });
@@ -156,7 +194,8 @@ export const {
 	CALC_OUT_OF_STOCK,
 	SET_ADD_ITEM_MODAL,
 	SET_DELETE_ITEM_MODAL,
-	SET_DELETE_ITEM_ID,
+	SET_ITEM_ID,
+	SET_ITEM_DETAILS_MODAL,
 } = itemSlice.actions;
 
 export const selectIsLoading = (state) => state.item.isLoading;
@@ -164,6 +203,8 @@ export const selectIsOpenAddItemModal = (state) =>
 	state.item.isAddItemModalOpen;
 export const selectIsOpenDeleteItemModal = (state) =>
 	state.item.isDeleteItemModalOpen;
+export const selectisOpenItemDetailsModal = (state) =>
+	state.item.isItemDetailsModalOpen;
 export const selectItemID = (state) => state.item.itemID;
 export const selectTotalStoreValue = (state) => state.item.totalStoreValue;
 export const selectItemsOutOfStock = (state) => state.item.totalItemsOutOfStock;
