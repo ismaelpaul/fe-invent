@@ -40,7 +40,6 @@ const EditProfile = () => {
 		bio: user?.bio,
 		picture: user?.picture,
 	};
-	console.log(user.picture, '<<< user pic');
 
 	const [profile, setProfile] = useState(initialState);
 	const [profileImage, setProfileImage] = useState({
@@ -48,7 +47,6 @@ const EditProfile = () => {
 		zoom: 2,
 		croppedImage: '',
 	});
-	console.log(profileImage, '<<< profile image');
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -62,8 +60,7 @@ const EditProfile = () => {
 
 	const saveProfile = async (e) => {
 		e.preventDefault();
-		console.log('submitted');
-		console.log(typeof profileImage.croppedImage, '<<< typeof');
+
 		try {
 			let imageURL;
 			if (profileImage.croppedImage) {
@@ -79,7 +76,6 @@ const EditProfile = () => {
 
 				const imageData = await response.json();
 				imageURL = imageData.url.toString();
-				console.log(imageData, '<<<imageData');
 			}
 
 			const formData = {
