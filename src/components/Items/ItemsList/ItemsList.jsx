@@ -10,6 +10,7 @@ import {
 	SET_ITEM_ID,
 	SET_DELETE_ITEM_MODAL,
 	SET_ITEM_DETAILS_MODAL,
+	getItem,
 } from '../../../assets/redux/features/item/itemSlice';
 import { SET_SIDEBAR } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import { shortenText } from '../../../utils/utils';
@@ -33,9 +34,9 @@ const ItemsList = ({ items, isLoading }) => {
 
 	const dispatch = useDispatch();
 
-	const handleClickOnRow = (id) => {
+	const handleClickOnRow = async (id) => {
+		await dispatch(getItem(id));
 		dispatch(SET_ITEM_DETAILS_MODAL(true));
-		dispatch(SET_ITEM_ID(id));
 		dispatch(SET_SIDEBAR(false));
 	};
 
