@@ -128,6 +128,11 @@ export const getSingleItem = async (id) => {
 	return response.data;
 };
 
+export const updateSingleItem = async (id, formData) => {
+	const response = await inventApi.patch(`/products/${id}`, formData);
+	return response.data;
+};
+
 export const deleteItem = async (id) => {
 	const response = await inventApi.delete(`/products/${id}`);
 	return response.data;
