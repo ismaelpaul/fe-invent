@@ -5,6 +5,7 @@ import {
 	deleteItem,
 	getAllItems,
 	getSingleItem,
+	updateSingleItem,
 } from '../../../../utils/api';
 
 const initialState = {
@@ -50,11 +51,27 @@ export const getItems = createAsyncThunk(
 		}
 	}
 );
+
 export const getItem = createAsyncThunk(
 	'products/getSingleItem',
 	async (id, thunkAPI) => {
 		try {
 			return await getSingleItem(id);
+		} catch (error) {
+			const message =
+				(error.response && error.response.data && error.response.message) ||
+				error.message ||
+				error.toString();
+			return thunkAPI.rejectWithValue(message);
+		}
+	}
+);
+
+export const updateItem = createAsyncThunk(
+	'products/updateItem',
+	async ({ id, formData }, thunkAPI) => {
+		try {
+			return await updateSingleItem(id, formData);
 		} catch (error) {
 			const message =
 				(error.response && error.response.data && error.response.message) ||
@@ -181,6 +198,21 @@ const itemSlice = createSlice({
 				state.item = action.payload;
 			})
 			.addCase(getItem.rejected, (state, action) => {
+				state.isLoading = false;
+				state.isError = true;
+				state.message = action.payload;
+				toast.error(action.payload);
+			})
+			.addCase(updateItem.pending, (state) => {
+				state.isLoading = true;
+			})
+			.addCase(updateItem.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+				state.isError = false;
+				toast.success('Item succesfully updated');
+			})
+			.addCase(updateItem.rejected, (state, action) => {
 				state.isLoading = false;
 				state.isError = true;
 				state.message = action.payload;
