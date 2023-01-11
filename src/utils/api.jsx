@@ -5,7 +5,6 @@ const inventApi = axios.create({
 	baseURL: 'http://localhost:9090/api',
 	headers: {
 		'Access-Control-Allow-Origin': 'http://127.0.0.1:5173',
-		'Content-Type': 'multipart/form-data',
 	},
 	withCredentials: true,
 	credentials: 'include',
