@@ -1,14 +1,8 @@
 @use '/src/styles/abstracts' as a;
 
-$sidebar_close: 8vw;
-$sidebar_close_992px_screen: 6vw;
-$sidebar_close_1200px_screen: 5vw;
-$sidebar_close_1400px_screen: 4.5vw;
-$sidebar_close_1600px_screen: 3.5vw;
-
 .modal__background {
 	height: 92vh;
-	width: (100vw - $sidebar_close);
+	width: (100vw - a.$sidebar_close);
 	background-color: rgba(136, 136, 136, 0.7);
 	position: fixed;
 	z-index: 99999;
@@ -48,13 +42,13 @@ $sidebar_close_1600px_screen: 3.5vw;
 
 @media screen and (min-width: 992px) {
 	.modal__background {
-		width: (100vw - $sidebar_close_992px_screen);
+		width: (100vw - a.$sidebar_close_992px_screen);
 	}
 }
 
 @media screen and (min-width: 1200px) {
 	.modal__background {
-		width: (100vw - $sidebar_close_1200px_screen);
+		width: (100vw - a.$sidebar_close_1200px_screen);
 		.modal__container {
 			max-width: 65%;
 		}
@@ -62,7 +56,7 @@ $sidebar_close_1600px_screen: 3.5vw;
 }
 @media screen and (min-width: 1400px) {
 	.modal__background {
-		width: (100vw - $sidebar_close_1400px_screen);
+		width: (100vw - a.$sidebar_close_1400px_screen);
 		.modal__container {
 			max-width: 55%;
 		}
@@ -70,7 +64,7 @@ $sidebar_close_1600px_screen: 3.5vw;
 }
 @media screen and (min-width: 1600px) {
 	.modal__background {
-		width: (100vw - $sidebar_close_1600px_screen);
+		width: (100vw - a.$sidebar_close_1600px_screen);
 		.modal__container {
 			max-width: 45%;
 		}
@@ -78,7 +72,7 @@ $sidebar_close_1600px_screen: 3.5vw;
 }
 @media screen and (min-width: 1900px) {
 	.modal__background {
-		width: (100vw - $sidebar_close_1600px_screen);
+		width: (100vw - a.$sidebar_close_1600px_screen);
 		.modal__container {
 			max-width: 40%;
 		}
