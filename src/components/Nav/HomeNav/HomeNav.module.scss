@@ -1,13 +1,12 @@
 @use '/src/styles/abstracts' as a;
 
 .nav {
-	min-height: 8vh;
+	min-height: 10vh;
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 	font-family: a.$roboto;
 	background-color: a.$primary-color;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
 	.container {
 		width: 100%;
@@ -34,5 +33,30 @@
 		gap: 2rem;
 
 		margin-right: 5%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.nav {
+		.container {
+			.logo {
+				font-size: 1.8rem;
+				p {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1200px) {
+	.nav {
+		.container {
+			.logo {
+				font-size: 1.9rem;
+				p {
+					font-size: 1.5rem;
+				}
+			}
+		}
 	}
 }
