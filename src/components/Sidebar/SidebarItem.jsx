@@ -6,12 +6,12 @@ const SidebarItem = ({ item, isSidebarOpen }) => {
 
 	return (
 		<NavLink className={activeSublink} to={item.path}>
-			<div className={styles.sidebarTitle}>
+			<nav className={styles.sidebarTitle}>
 				<span>
 					{item.icon && <div className={styles.icon}>{item.icon}</div>}
 					{isSidebarOpen && <div>{item.title}</div>}
 				</span>
-			</div>
+			</nav>
 		</NavLink>
 	);
 };
