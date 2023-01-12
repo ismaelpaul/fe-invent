@@ -6,13 +6,13 @@ import '../../../styles/buttons.scss';
 
 const HomeNav = () => {
 	return (
-		<nav className={styles.nav}>
+		<nav aria-label="left navigation" className={styles.nav}>
 			<div className={styles.container}>
 				<div className={styles.logo}>
 					<MdOutlineInventory2 />
 					<p>Invent</p>
 				</div>
-				<div>
+				<nav aria-label="right navigation">
 					<ul>
 						<ShowOnLogout>
 							<li>
@@ -33,7 +33,7 @@ const HomeNav = () => {
 							</li>
 						</ShowOnLogin>
 					</ul>
-				</div>
+				</nav>
 			</div>
 		</nav>
 	);
