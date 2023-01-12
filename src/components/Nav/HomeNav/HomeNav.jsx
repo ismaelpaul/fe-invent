@@ -6,7 +6,7 @@ import '../../../styles/buttons.scss';
 
 const HomeNav = () => {
 	return (
-		<div className={styles.header}>
+		<nav className={styles.nav}>
 			<div className={styles.container}>
 				<div className={styles.logo}>
 					<MdOutlineInventory2 />
@@ -35,7 +35,7 @@ const HomeNav = () => {
 					</ul>
 				</div>
 			</div>
-		</div>
+		</nav>
 	);
 };
 

@@ -1,9 +1,8 @@
 @use '/src/styles/abstracts' as a;
 
-.header {
+.nav {
 	min-height: 8vh;
 	display: flex;
-
 	align-items: center;
 	gap: 0.5rem;
 	font-family: a.$roboto;
