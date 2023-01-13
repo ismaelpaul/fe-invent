@@ -81,7 +81,9 @@ const ItemsList = ({ items, isLoading }) => {
 			</div>
 
 			{isLoading ? (
-				<PulseLoader />
+				<div className={styles.list__loader}>
+					<PulseLoader />
+				</div>
 			) : (
 				<div className={styles.list__table}>
 					{!isLoading && items.length === 0 ? (

@@ -17,8 +17,17 @@
 			font-weight: a.$medium;
 		}
 	}
+	.list__loader {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
+	}
 	.list__table {
 		font-family: a.$roboto;
+		p {
+			margin-top: 2rem;
+			text-align: center;
+		}
 		.list__title {
 			height: 2rem;
 		}
