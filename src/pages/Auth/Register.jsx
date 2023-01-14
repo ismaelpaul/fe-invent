@@ -9,7 +9,7 @@ import {
 	SET_LOGIN,
 	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
-import AuthCard from '../../components/Cards/Auth/AuthCard';
+import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
@@ -70,7 +70,7 @@ const Register = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<AuthCard>
+			<Card cardClass="auth">
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<HiOutlineUserAdd className={styles.icon} />
@@ -128,7 +128,7 @@ const Register = () => {
 						</Link>
 					</span>
 				</div>
-			</AuthCard>
+			</Card>
 		</div>
 	);
 };

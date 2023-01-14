@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { resetPassword } from '../../utils/api';
-import AuthCard from '../../components/Cards/Auth/AuthCard';
+import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
@@ -51,7 +51,7 @@ const Reset = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<AuthCard>
+			<Card cardClass="auth">
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<RiLockPasswordLine className={styles.icon} />
@@ -86,7 +86,7 @@ const Reset = () => {
 						</button>
 					</form>
 				</div>
-			</AuthCard>
+			</Card>
 		</div>
 	);
 };

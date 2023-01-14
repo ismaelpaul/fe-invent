@@ -10,7 +10,7 @@ import {
 	SET_NAME,
 } from '../../assets/redux/features/auth/authSlice';
 import { PulseLoader } from 'react-spinners';
-import AuthCard from '../../components/Cards/Auth/AuthCard';
+import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
@@ -64,7 +64,7 @@ const Login = () => {
 			{isLoading ? (
 				<PulseLoader color="#252f3c" size={11} />
 			) : (
-				<AuthCard>
+				<Card cardClass="auth">
 					<div className={styles.form}>
 						<div className={styles.formTop}>
 							<FiLogIn className={styles.icon} />
@@ -108,7 +108,7 @@ const Login = () => {
 							</Link>
 						</span>
 					</div>
-				</AuthCard>
+				</Card>
 			)}
 		</div>
 	);

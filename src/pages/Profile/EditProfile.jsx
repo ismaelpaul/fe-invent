@@ -4,7 +4,6 @@ import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectUser } from '../../assets/redux/features/auth/authSlice';
-import ProfileCard from '../../components/Cards/Profile/ProfileCard';
 import CropProfileImageModal from '../../components/CropProfileImageModal/CropProfileImageModal';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 import { updateUserProfile } from '../../utils/api';
@@ -13,6 +12,7 @@ import { BiMessageSquareEdit } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import styles from './Profile.module.scss';
 import '../../styles/buttons.scss';
+import Card from '../../components/Card/Card';
 
 const EditProfile = () => {
 	useRedirectLoggedOutUser('/login');
@@ -103,7 +103,7 @@ const EditProfile = () => {
 					setProfileImage={setProfileImage}
 				/>
 			) : (
-				<ProfileCard>
+				<Card cardClass="profile">
 					<div className={styles.profile__image}>
 						<Avatar
 							src={
@@ -180,7 +180,7 @@ const EditProfile = () => {
 							</button>
 						</div>
 					</form>
-				</ProfileCard>
+				</Card>
 			)}
 		</div>
 	);

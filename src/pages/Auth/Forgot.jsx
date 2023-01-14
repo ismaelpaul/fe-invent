@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { forgotPassword } from '../../utils/api';
 import { validateEmail } from '../../utils/utils';
-import AuthCard from '../../components/Cards/Auth/AuthCard';
+import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
@@ -30,7 +30,7 @@ const Forgot = () => {
 
 	return (
 		<div className={`container ${styles.auth}`}>
-			<AuthCard>
+			<Card cardClass="auth">
 				<div className={styles.form}>
 					<div className={styles.formTop}>
 						<HiOutlineMail className={styles.icon} />
@@ -57,7 +57,7 @@ const Forgot = () => {
 						</button>
 					</form>
 				</div>
-			</AuthCard>
+			</Card>
 		</div>
 	);
 };

@@ -4,7 +4,6 @@ import {
 	selectUser,
 	SET_USER,
 } from '../../assets/redux/features/auth/authSlice';
-import ProfileCard from '../../components/Cards/Profile/ProfileCard';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 import { BiMessageSquareEdit } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';
@@ -12,6 +11,7 @@ import styles from './Profile.module.scss';
 import { useEffect } from 'react';
 import { getUser } from '../../utils/api';
 import { Avatar } from '@mui/material';
+import Card from '../../components/Card/Card';
 
 const Profile = () => {
 	useRedirectLoggedOutUser('/login');
@@ -30,7 +30,7 @@ const Profile = () => {
 
 	return (
 		<div className={styles.container}>
-			<ProfileCard>
+			<Card cardClass="profile">
 				<div className={styles.profile__image}>
 					<Avatar
 						src={user.picture}
@@ -66,7 +66,7 @@ const Profile = () => {
 						</span>
 					</Link>
 				</div>
-			</ProfileCard>
+			</Card>
 		</div>
 	);
 };

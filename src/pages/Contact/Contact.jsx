@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import ContactCard from '../../components/Cards/ContactCard/ContactCard';
 import { sendContactMessage } from '../../utils/api';
+import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
+import Card from '../../components/Card/Card';
 import styles from './Contact.module.scss';
 import '../../styles/buttons.scss';
-import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 
 const Contact = () => {
 	useRedirectLoggedOutUser('/login');
@@ -30,7 +30,7 @@ const Contact = () => {
 	};
 	return (
 		<div className={styles.contact}>
-			<ContactCard>
+			<Card cardClass="contact">
 				<h3>Contact Us</h3>
 				<p>
 					Feel free to contact us by submitting the form below and we will get
@@ -62,7 +62,7 @@ const Contact = () => {
 					</form>
 					<button className="primary-button">Send message</button>
 				</div>
-			</ContactCard>
+			</Card>
 		</div>
 	);
 };
