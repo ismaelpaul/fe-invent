@@ -8,6 +8,7 @@
 	font-size: 1rem;
 	font-weight: a.$regular;
 	border: 1px solid a.$primary-color;
+	transition: 0.2s ease-in-out;
 	cursor: pointer;
 }
 
@@ -15,13 +16,20 @@
 	@extend .btn;
 	background-color: a.$primary-color;
 	color: white;
+	&:hover {
+		border: 1px solid lighten(a.$primary-color, 10);
+		box-shadow: 0rem 0rem 1rem lighten(a.$primary-color, 10);
+	}
 }
 
 .secondary-button {
 	@extend .btn;
 	background-color: transparent;
-
 	color: a.$primary-color;
+	&:hover {
+		border: 1px solid a.$primary-color;
+		box-shadow: 0rem 0rem 1rem lighten(a.$primary-color, 10);
+	}
 }
 
 .primary-button-delete {
@@ -29,11 +37,43 @@
 	background-color: a.$delete;
 	border: 1px solid a.$delete;
 	color: white;
+	&:hover {
+		background-color: a.$delete;
+		box-shadow: 0rem 0rem 1rem lighten(a.$delete, 10);
+	}
 }
 
 .primary-button-home {
 	@extend .btn;
-	width: 7rem;
 	background-color: white;
 	color: a.$primary-color;
+	&:hover {
+		background-color: a.$primary-color;
+		color: white;
+	}
+}
+.secondary-button-home {
+	@extend .btn;
+
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+
+	&:hover {
+		background-color: white;
+		color: a.$primary-color;
+		border: 1px solid a.$primary-color;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.secondary-button-home {
+		width: 60%;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.secondary-button-home {
+		width: 50%;
+	}
 }
