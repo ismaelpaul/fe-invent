@@ -1,7 +1,7 @@
 @use '/src/styles/abstracts' as a;
 
 .container {
-	height: 85vh;
+	height: 92vh;
 	background-color: a.$bg-color;
 	display: flex;
 	justify-content: center;
@@ -21,7 +21,8 @@
 		border: 1px solid #ccc;
 		border-radius: 0.3rem;
 		position: relative;
-		transform: translate(104px, -33px);
+		transform: translate(150px, -33px);
+		cursor: pointer;
 		p {
 			font-size: 0.9rem;
 			padding: 0.3rem;
@@ -58,7 +59,7 @@
 			}
 		}
 		button {
-			margin-top: 1rem;
+			margin-top: 2rem;
 			display: block;
 			margin-left: auto;
 		}
@@ -86,6 +87,9 @@
 			.icon {
 				font-size: 1.5rem;
 			}
+		}
+		.profile__btn {
+			display: flex;
 		}
 	}
 }
