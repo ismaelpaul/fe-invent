@@ -5,13 +5,12 @@ import { BiMessageSquareEdit } from 'react-icons/bi';
 import { SET_ITEM_DETAILS_MODAL } from '../../../assets/redux/features/item/itemSlice';
 import DOMPurify from 'dompurify';
 import Moment from 'react-moment';
-import styles from './ItemDetailsModal.module.scss';
 import { useState } from 'react';
+import Card from '../../Card/Card';
+import styles from './ItemDetailsModal.module.scss';
 
 const ItemDetailsModal = () => {
-	const [modalClassName, setModalClassName] = useState(
-		styles.item__modal__container__open
-	);
+	const [modalClassName, setModalClassName] = useState('item__details__open');
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 	const { item } = useSelector((state) => state.item);
 	const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const ItemDetailsModal = () => {
 	};
 
 	const handleCloseModal = () => {
-		setModalClassName(styles.item__modal__container__close);
+		setModalClassName('item__details__close');
 		setTimeout(() => {
 			dispatch(SET_ITEM_DETAILS_MODAL(false));
 		}, 400);
@@ -37,7 +36,7 @@ const ItemDetailsModal = () => {
 					: `${styles.item__modal__background} ${styles.modal__sidebarClose}`
 			}
 		>
-			<div className={`${styles.item__modal__container} ${modalClassName}`}>
+			<Card cardClass={`item__details ${modalClassName}`}>
 				<div className={styles.item__modal__header}>
 					<div className={styles.modal__icon}>
 						<HiArrowNarrowRight onClick={handleCloseModal} />
@@ -100,7 +99,7 @@ const ItemDetailsModal = () => {
 						</span>
 					</div>
 				</div>
-			</div>
+			</Card>
 		</div>
 	);
 };

@@ -9,6 +9,7 @@ import {
 	selectItemID,
 	SET_DELETE_ITEM_MODAL,
 } from '../../../assets/redux/features/item/itemSlice';
+import Card from '../../Card/Card';
 
 const DeleteItemModal = () => {
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
@@ -29,7 +30,7 @@ const DeleteItemModal = () => {
 					: `${styles.delete__modal__background} ${styles.modal__sidebarClose}`
 			}
 		>
-			<div className={styles.delete__modal__container}>
+			<Card cardClass="delete__item">
 				<div className={styles.delete__modal__header}>
 					<h3>Delete item</h3>
 					<div className={styles.delete__modal__close}>
@@ -56,7 +57,7 @@ const DeleteItemModal = () => {
 						Delete item
 					</button>
 				</div>
-			</div>
+			</Card>
 		</div>
 	);
 };

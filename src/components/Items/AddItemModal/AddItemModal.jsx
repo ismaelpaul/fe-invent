@@ -8,8 +8,9 @@ import {
 import { selectIsSidebarOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
 import ItemForm from '../ItemForm/ItemForm';
 import { GrFormClose } from 'react-icons/gr';
-import '../../../styles/buttons.scss';
+import Card from '../../Card/Card';
 import styles from './AddItemModal.module.scss';
+import '../../../styles/buttons.scss';
 
 const initialState = {
 	name: '',
@@ -71,7 +72,7 @@ const AddItemModal = () => {
 					: `${styles.modal__background} ${styles.modal__sidebarClose}`
 			}
 		>
-			<div className={styles.modal__container}>
+			<Card cardClass="add__item">
 				<div className={styles.modal__header}>
 					<h3>Add New Item</h3>
 					<div className={styles.modal__close}>
@@ -99,7 +100,7 @@ const AddItemModal = () => {
 						Save item
 					</button>
 				</div>
-			</div>
+			</Card>
 		</div>
 	);
 };

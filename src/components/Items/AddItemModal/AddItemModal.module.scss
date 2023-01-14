@@ -11,32 +11,24 @@
 	justify-content: center;
 	align-items: center;
 
-	.modal__container {
-		font-family: a.$roboto;
-		max-width: 80%;
-		padding: 1.5rem;
-		background-color: rgb(255, 255, 255);
-		border-radius: 0.3rem;
-		box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.1);
-
-		.modal__header {
-			display: flex;
-		}
-		h3 {
-			width: 100%;
-			text-align: center;
-			padding-bottom: 1rem;
-		}
-		.modal__close {
-			font-size: 1.5rem;
-			margin-left: auto;
-		}
-		.modal__buttons {
-			padding-top: 1rem;
-			display: flex;
-			justify-content: center;
-			gap: 1.5rem;
-		}
+	.modal__header {
+		display: flex;
+	}
+	h3 {
+		width: 100%;
+		text-align: center;
+		padding-bottom: 1rem;
+	}
+	.modal__close {
+		font-size: 1.5rem;
+		margin-left: auto;
+		cursor: pointer;
+	}
+	.modal__buttons {
+		padding-top: 1rem;
+		display: flex;
+		justify-content: center;
+		gap: 1.5rem;
 	}
 }
 
@@ -49,32 +41,20 @@
 @media screen and (min-width: 1200px) {
 	.modal__background {
 		width: (100vw - a.$sidebar_close_1200px_screen);
-		.modal__container {
-			max-width: 65%;
-		}
 	}
 }
 @media screen and (min-width: 1400px) {
 	.modal__background {
 		width: (100vw - a.$sidebar_close_1400px_screen);
-		.modal__container {
-			max-width: 55%;
-		}
 	}
 }
 @media screen and (min-width: 1600px) {
 	.modal__background {
 		width: (100vw - a.$sidebar_close_1600px_screen);
-		.modal__container {
-			max-width: 45%;
-		}
 	}
 }
 @media screen and (min-width: 1900px) {
 	.modal__background {
 		width: (100vw - a.$sidebar_close_1600px_screen);
-		.modal__container {
-			max-width: 40%;
-		}
 	}
 }
