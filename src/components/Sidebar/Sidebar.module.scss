@@ -2,6 +2,7 @@
 
 .layout {
 	display: flex;
+
 	.sidebar {
 		position: static;
 		width: a.$sidebar_open;
@@ -45,6 +46,7 @@
 	}
 	.sidebarClosed {
 		width: a.$sidebar_close;
+		z-index: 999999;
 	}
 	main {
 		width: 100%;
