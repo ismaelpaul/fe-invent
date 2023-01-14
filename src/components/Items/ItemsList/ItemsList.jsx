@@ -127,14 +127,16 @@ const ItemsList = ({ items, isLoading }) => {
 												<Moment format="DD/MM/YY" className={styles.list__date}>
 													{createdAt}
 												</Moment>
-												<>
-													<BiMessageSquareEdit className={styles.list__icons} />
-													<BsTrash
-														color="#fc0330"
-														className={styles.list__icons}
-														onClick={() => handleOpenDeleteItemModal(_id)}
-													/>
-												</>
+												<div className={styles.list__icons__container}>
+													<div className={styles.list__icons__edit}>
+														<BiMessageSquareEdit />
+													</div>
+													<div className={styles.list__icons__delete}>
+														<BsTrash
+															onClick={() => handleOpenDeleteItemModal(_id)}
+														/>
+													</div>
+												</div>
 											</td>
 										</tr>
 									);

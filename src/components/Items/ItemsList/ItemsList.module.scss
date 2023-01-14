@@ -32,7 +32,7 @@
 			height: 2rem;
 		}
 		.list__info {
-			height: 2.5rem;
+			height: 3.3rem;
 		}
 		table {
 			border-collapse: collapse;
@@ -60,17 +60,38 @@
 		tr:nth-child(even) {
 			background-color: #fff;
 		}
-		.list__icons {
+		.list__icons__container {
+			display: flex;
+			width: 5rem;
+			gap: 0.5rem;
+		}
+		.list__icons__edit,
+		.list__icons__delete {
 			display: none;
+			width: 2rem;
+			height: 2rem;
+			border-radius: 50%;
 			font-size: 1.2rem;
-			margin-right: 0.9rem;
+			color: rgb(128, 128, 128);
+			background-color: rgb(236, 236, 236);
 			cursor: pointer;
+		}
+		.list__icons__edit:hover {
+			color: a.$primary-color;
+			background-color: white;
+		}
+		.list__icons__delete:hover {
+			color: a.$delete;
+			background-color: white;
 		}
 
 		tr:hover {
 			background-color: #ccc;
-			.list__icons {
-				display: inline-block;
+			.list__icons__edit,
+			.list__icons__delete {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 
 			.list__date {
