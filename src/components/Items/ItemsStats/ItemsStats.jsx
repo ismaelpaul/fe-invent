@@ -9,7 +9,7 @@ import {
 	selectTotalStoreValue,
 } from '../../../assets/redux/features/item/itemSlice';
 import { formatTotalStoreValue } from '../../../utils/utils';
-import ItemsInfoCard from '../../Cards/ItemsInfoCard/ItemsInfoCard';
+import ItemsInfo from './ItemsInfo/ItemsInfo';
 import styles from './ItemsStats.module.scss';
 
 const cartIcon = <BsCart color="#6D1BE7" />;
@@ -30,19 +30,19 @@ const ItemsStats = ({ items }) => {
 		<div className={styles.itemsStats__container}>
 			<h3>Items Stats</h3>
 			<div className={styles.itemsStats__info}>
-				<ItemsInfoCard
+				<ItemsInfo
 					iconBackgroundColor={styles.icon1}
 					icon={cartIcon}
 					title={'Total Items'}
 					count={items.length}
 				/>
-				<ItemsInfoCard
+				<ItemsInfo
 					iconBackgroundColor={styles.icon2}
 					icon={storeValueIcon}
 					title={'Total Store Value'}
 					count={`£ ${formatTotalStoreValue(totalStoreValue.toFixed(2))}`}
 				/>
-				<ItemsInfoCard
+				<ItemsInfo
 					iconBackgroundColor={styles.icon3}
 					icon={outOfStockIcon}
 					title={'Items Out of Stock'}
