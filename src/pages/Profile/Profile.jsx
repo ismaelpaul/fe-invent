@@ -35,10 +35,10 @@ const Profile = () => {
 					<Avatar
 						src={user.picture}
 						alt="Profile"
-						style={{ width: '100%', height: 'auto', margin: 'auto' }}
+						style={{ width: 250, height: 250, margin: 'auto' }}
 					/>
 				</div>
-				{/* <div className={styles.vl}></div> */}
+
 				<div className={styles.profile__info}>
 					<p>
 						<span>Name:</span> {user.name}
