@@ -18,7 +18,7 @@
 	color: white;
 	&:hover {
 		border: 1px solid lighten(a.$primary-color, 10);
-		box-shadow: 0rem 0rem 1rem lighten(a.$primary-color, 10);
+		box-shadow: 0rem 0rem 0.5rem lighten(a.$primary-color, 10);
 	}
 }
 
@@ -47,9 +47,9 @@
 	@extend .btn;
 	background-color: white;
 	color: a.$primary-color;
+	border: 1px solid white;
 	&:hover {
-		background-color: a.$primary-color;
-		color: white;
+		box-shadow: 0rem 0rem 1rem lighten(white, 10);
 	}
 }
 .secondary-button-home {
@@ -58,7 +58,7 @@
 	background-color: transparent;
 	color: white;
 	border: 1px solid white;
-
+	padding: 1rem 1.5rem;
 	&:hover {
 		background-color: white;
 		color: a.$primary-color;
