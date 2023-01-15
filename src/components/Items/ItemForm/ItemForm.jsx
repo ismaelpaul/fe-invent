@@ -23,7 +23,7 @@ const ItemForm = ({
 							<img src={imagePreview} alt="Item image" />
 						</div>
 					) : (
-						<p>No image set for this product</p>
+						<p>No image set for this item.</p>
 					)}
 					<input
 						type="file"
