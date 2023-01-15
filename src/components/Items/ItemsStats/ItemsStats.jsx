@@ -7,7 +7,7 @@ import {
 	CALC_STORE_VALUE,
 	selectItemsOutOfStock,
 	selectTotalStoreValue,
-} from '../../../assets/redux/features/item/itemSlice';
+} from '../../../redux/features/item/itemSlice';
 import { formatTotalStoreValue } from '../../../utils/utils';
 import ItemsInfo from './ItemsInfo/ItemsInfo';
 import styles from './ItemsStats.module.scss';

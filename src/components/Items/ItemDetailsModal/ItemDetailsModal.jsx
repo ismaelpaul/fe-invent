@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsSidebarOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
+import { selectIsSidebarOpen } from '../../../redux/features/sidebar/sidebarSlice';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { BiMessageSquareEdit } from 'react-icons/bi';
-import { SET_ITEM_DETAILS_MODAL } from '../../../assets/redux/features/item/itemSlice';
+import { SET_ITEM_DETAILS_MODAL } from '../../../redux/features/item/itemSlice';
 import DOMPurify from 'dompurify';
 import Moment from 'react-moment';
 import { useState } from 'react';

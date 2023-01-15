@@ -4,8 +4,8 @@ import {
 	addItem,
 	selectIsLoading,
 	SET_ADD_ITEM_MODAL,
-} from '../../../assets/redux/features/item/itemSlice';
-import { selectIsSidebarOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
+} from '../../../redux/features/item/itemSlice';
+import { selectIsSidebarOpen } from '../../../redux/features/sidebar/sidebarSlice';
 import ItemForm from '../ItemForm/ItemForm';
 import { GrFormClose } from 'react-icons/gr';
 import Card from '../../Card/Card';
@@ -58,8 +58,6 @@ const AddItemModal = () => {
 		formData.append('price', price);
 		formData.append('description', description);
 		formData.append('image', itemImage);
-
-		console.log(...formData);
 
 		await dispatch(addItem(formData));
 		await dispatch(SET_ADD_ITEM_MODAL(false));

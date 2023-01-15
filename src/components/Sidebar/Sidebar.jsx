@@ -7,12 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import {
 	selectIsSidebarOpen,
 	SET_SIDEBAR,
-} from '../../assets/redux/features/sidebar/sidebarSlice';
+} from '../../redux/features/sidebar/sidebarSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	selectIsOpenAddItemModal,
 	selectisOpenItemDetailsModal,
-} from '../../assets/redux/features/item/itemSlice';
+} from '../../redux/features/item/itemSlice';
 
 const Sidebar = ({ children }) => {
 	const dispatch = useDispatch();

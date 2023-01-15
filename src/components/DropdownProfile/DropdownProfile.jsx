@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../assets/redux/features/auth/authSlice';
+import { selectUser } from '../../redux/features/auth/authSlice';
 import dropdownProfile from '../../data/dropdownprofile';
 import DropdownItems from './DropdownItems';
 import { FiLogOut } from 'react-icons/fi';
-import { SET_LOGIN } from '../../assets/redux/features/auth/authSlice';
+import { SET_LOGIN } from '../../redux/features/auth/authSlice';
 import { logoutUser } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 import styles from './DropdownProfile.module.scss';

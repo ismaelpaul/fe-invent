@@ -5,10 +5,7 @@ import { toast } from 'react-hot-toast';
 import { validateEmail } from '../../utils/utils';
 import { registerUser } from '../../utils/api';
 import { useDispatch } from 'react-redux';
-import {
-	SET_LOGIN,
-	SET_NAME,
-} from '../../assets/redux/features/auth/authSlice';
+import { SET_LOGIN, SET_NAME } from '../../redux/features/auth/authSlice';
 import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';

@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../assets/redux/features/auth/authSlice';
+import { selectIsLoggedIn } from '../../redux/features/auth/authSlice';
 import {
 	getItems,
 	selectIsOpenAddItemModal,
 	selectIsOpenDeleteItemModal,
+	selectIsOpenEditItemModal,
 	selectisOpenItemDetailsModal,
-} from '../../assets/redux/features/item/itemSlice';
+} from '../../redux/features/item/itemSlice';
 import AddItemModal from '../../components/Items/AddItemModal/AddItemModal';
 import DeleteItemModal from '../../components/Items/DeleteItemModal/DeleteItemModal';
+import EditItemModal from '../../components/Items/EditItemModal/EditItemModal';
 import ItemDetailsModal from '../../components/Items/ItemDetailsModal/ItemDetailsModal';
 import ItemsList from '../../components/Items/ItemsList/ItemsList';
 import ItemsStats from '../../components/Items/ItemsStats/ItemsStats';
@@ -23,6 +25,7 @@ const Dashboard = () => {
 	const isLoggedIn = useSelector(selectIsLoggedIn);
 
 	const isAddItemModalOpen = useSelector(selectIsOpenAddItemModal);
+	const isEditItemModalOpen = useSelector(selectIsOpenEditItemModal);
 	const isDeleteModalOpen = useSelector(selectIsOpenDeleteItemModal);
 	const isItemDetailsModalOpen = useSelector(selectisOpenItemDetailsModal);
 
@@ -43,6 +46,7 @@ const Dashboard = () => {
 	return (
 		<div>
 			{isAddItemModalOpen ? <AddItemModal /> : null}
+			{isEditItemModalOpen ? <EditItemModal /> : null}
 			{isDeleteModalOpen ? <DeleteItemModal /> : null}
 			{isItemDetailsModalOpen ? <ItemDetailsModal /> : null}
 

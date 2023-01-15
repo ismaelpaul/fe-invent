@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-	selectUser,
-	SET_USER,
-} from '../../assets/redux/features/auth/authSlice';
+import { selectUser, SET_USER } from '../../redux/features/auth/authSlice';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 import { BiMessageSquareEdit } from 'react-icons/bi';
 import { RiLockPasswordLine } from 'react-icons/ri';

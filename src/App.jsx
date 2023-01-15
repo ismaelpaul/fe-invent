@@ -10,7 +10,7 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { SET_LOGIN } from './assets/redux/features/auth/authSlice';
+import { SET_LOGIN } from './redux/features/auth/authSlice';
 import { useEffect } from 'react';
 import { getLoginStatus } from './utils/api';
 import EditProfile from './pages/Profile/EditProfile';

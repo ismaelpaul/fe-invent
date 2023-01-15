@@ -5,10 +5,7 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { validateEmail } from '../../utils/utils';
 import { loginUser } from '../../utils/api';
-import {
-	SET_LOGIN,
-	SET_NAME,
-} from '../../assets/redux/features/auth/authSlice';
+import { SET_LOGIN, SET_NAME } from '../../redux/features/auth/authSlice';
 import { PulseLoader } from 'react-spinners';
 import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';

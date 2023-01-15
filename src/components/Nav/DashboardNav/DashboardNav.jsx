@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	selectUser,
-	SET_USER,
-} from '../../../assets/redux/features/auth/authSlice';
+import { selectUser, SET_USER } from '../../../redux/features/auth/authSlice';
 import { getUser } from '../../../utils/api';
 import DropdownProfile from '../../DropdownProfile/DropdownProfile';
 import useOnclickOutside from 'react-cool-onclickoutside';
-import { selectIsOpenAddItemModal } from '../../../assets/redux/features/item/itemSlice';
+import { selectIsOpenAddItemModal } from '../../../redux/features/item/itemSlice';
 import styles from './DashboardNav.module.scss';
 
 const DashboardNav = () => {
