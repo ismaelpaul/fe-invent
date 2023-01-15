@@ -6,7 +6,7 @@ import {
 	getAllItems,
 	getSingleItem,
 	updateSingleItem,
-} from '../../../../utils/api';
+} from '../../../utils/api';
 
 const initialState = {
 	item: null,
@@ -14,6 +14,7 @@ const initialState = {
 	isAddItemModalOpen: false,
 	isDeleteItemModalOpen: false,
 	isItemDetailsModalOpen: false,
+	isEditItemModalOpen: false,
 	isError: false,
 	isSuccess: false,
 	isLoading: false,
@@ -69,7 +70,9 @@ export const getItem = createAsyncThunk(
 
 export const updateItem = createAsyncThunk(
 	'products/updateItem',
-	async ({ id, formData }, thunkAPI) => {
+	async (id, formData, thunkAPI) => {
+		console.log(id, '<<< id slice');
+		console.log(formData, '<<< formData slice');
 		try {
 			return await updateSingleItem(id, formData);
 		} catch (error) {
@@ -129,6 +132,9 @@ const itemSlice = createSlice({
 		},
 		SET_ADD_ITEM_MODAL(state, action) {
 			state.isAddItemModalOpen = action.payload;
+		},
+		SET_EDIT_ITEM_MODAL(state, action) {
+			state.isEditItemModalOpen = action.payload;
 		},
 		SET_DELETE_ITEM_MODAL(state, action) {
 			state.isDeleteItemModalOpen = action.payload;
@@ -206,7 +212,7 @@ const itemSlice = createSlice({
 			.addCase(updateItem.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(updateItem.fulfilled, (state, action) => {
+			.addCase(updateItem.fulfilled, (state) => {
 				state.isLoading = false;
 				state.isSuccess = true;
 				state.isError = false;
@@ -225,6 +231,7 @@ export const {
 	CALC_STORE_VALUE,
 	CALC_OUT_OF_STOCK,
 	SET_ADD_ITEM_MODAL,
+	SET_EDIT_ITEM_MODAL,
 	SET_DELETE_ITEM_MODAL,
 	SET_ITEM_ID,
 	SET_ITEM_DETAILS_MODAL,
@@ -233,6 +240,8 @@ export const {
 export const selectIsLoading = (state) => state.item.isLoading;
 export const selectIsOpenAddItemModal = (state) =>
 	state.item.isAddItemModalOpen;
+export const selectIsOpenEditItemModal = (state) =>
+	state.item.isEditItemModalOpen;
 export const selectIsOpenDeleteItemModal = (state) =>
 	state.item.isDeleteItemModalOpen;
 export const selectisOpenItemDetailsModal = (state) =>

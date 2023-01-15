@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsSidebarOpen } from '../../../assets/redux/features/sidebar/sidebarSlice';
+import { selectIsSidebarOpen } from '../../../redux/features/sidebar/sidebarSlice';
 import { GrFormClose } from 'react-icons/gr';
 import '../../../styles/buttons.scss';
 import styles from './DeleteItemModal.module.scss';
@@ -8,7 +8,7 @@ import {
 	getItems,
 	selectItemID,
 	SET_DELETE_ITEM_MODAL,
-} from '../../../assets/redux/features/item/itemSlice';
+} from '../../../redux/features/item/itemSlice';
 import Card from '../../Card/Card';
 
 const DeleteItemModal = () => {

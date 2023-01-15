@@ -1,23 +1,26 @@
 import { Avatar } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectUser } from '../../assets/redux/features/auth/authSlice';
+import { selectUser } from '../../redux/features/auth/authSlice';
 import CropProfileImageModal from '../../components/CropProfileImageModal/CropProfileImageModal';
 import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser';
 import { updateUserProfile } from '../../utils/api';
 import { GrFormClose } from 'react-icons/gr';
 import { BiMessageSquareEdit } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import { SET_SIDEBAR } from '../../redux/features/sidebar/sidebarSlice';
+import Card from '../../components/Card/Card';
 import styles from './Profile.module.scss';
 import '../../styles/buttons.scss';
-import Card from '../../components/Card/Card';
 
 const EditProfile = () => {
 	useRedirectLoggedOutUser('/login');
 
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
 	const user = useSelector(selectUser);
 
 	const inputImageRef = useRef();
@@ -44,7 +47,7 @@ const EditProfile = () => {
 	const [profile, setProfile] = useState(initialState);
 	const [profileImage, setProfileImage] = useState({
 		img: null,
-		zoom: 2,
+		zoom: 1.5,
 		croppedImage: '',
 	});
 
@@ -56,6 +59,7 @@ const EditProfile = () => {
 	const handleImageChange = (e) => {
 		let url = URL.createObjectURL(e.target.files[0]);
 		setProfileImage({ ...profileImage, img: url });
+		dispatch(SET_SIDEBAR(false));
 	};
 
 	const saveProfile = async (e) => {
@@ -102,86 +106,85 @@ const EditProfile = () => {
 					profileImage={profileImage}
 					setProfileImage={setProfileImage}
 				/>
-			) : (
-				<Card cardClass="profile">
-					<div className={styles.profile__image}>
-						<Avatar
-							src={
-								profileImage.croppedImage
-									? profileImage.croppedImage
-									: user.picture
-							}
-							alt="Profile"
-							style={{ width: '100%', height: 'auto', margin: 'auto' }}
-						/>
-						<div
-							className={styles.profile__image__edit}
-							onClick={triggerInputImage}
-						>
-							<BiMessageSquareEdit />
-							<p>Edit</p>
-						</div>
+			) : null}
+			<Card cardClass="profile">
+				<div className={styles.profile__image}>
+					<Avatar
+						src={
+							profileImage.croppedImage
+								? profileImage.croppedImage
+								: user.picture
+						}
+						alt="Profile"
+						style={{ width: 250, height: 250, margin: 'auto' }}
+					/>
+					<div
+						className={styles.profile__image__edit}
+						onClick={triggerInputImage}
+					>
+						<BiMessageSquareEdit />
+						<p>Edit</p>
 					</div>
-					<form onSubmit={saveProfile}>
-						<input
-							ref={inputImageRef}
-							type="file"
-							name="image"
-							onChange={handleImageChange}
-							style={{ display: 'none' }}
-						/>
+				</div>
+				<form onSubmit={saveProfile}>
+					<input
+						ref={inputImageRef}
+						type="file"
+						name="image"
+						onChange={handleImageChange}
+						style={{ display: 'none' }}
+					/>
 
-						<div className={styles.profile__info}>
-							<Link to={'/profile'}>
-								<GrFormClose className={styles.icon__close} />
-							</Link>
-							<div className={styles.profile__info__edit}>
-								<label>Name</label>
+					<div className={styles.profile__info}>
+						<Link to={'/profile'}>
+							<GrFormClose className={styles.icon__close} />
+						</Link>
+						<div className={styles.profile__info__edit}>
+							<label>Name</label>
 
-								<input
-									type="text"
-									name="name"
-									value={profile?.name}
-									onChange={handleInputChange}
-								/>
-							</div>
-							<div className={styles.profile__info__edit}>
-								<label>Email</label>
-								<input
-									type="email"
-									name="email"
-									value={profile?.email}
-									disabled
-								/>
-								<p>Email can't be changed.</p>
-							</div>
-							<div className={styles.profile__info__edit}>
-								<label>Phone number</label>
-								<input
-									type="text"
-									name="phone"
-									value={profile?.phone}
-									onChange={handleInputChange}
-								/>
-							</div>
-							<div className={styles.profile__info__edit}>
-								<label>Bio</label>
-								<textarea
-									name="bio"
-									value={profile?.bio}
-									onChange={handleInputChange}
-									cols="20"
-									rows="5"
-								/>
-							</div>
-
-							<button type="submit" className="primary-button">
-								Save changes
-							</button>
+							<input
+								type="text"
+								name="name"
+								value={profile?.name}
+								onChange={handleInputChange}
+							/>
 						</div>
-					</form>
-				</Card>
-			)}
+						<div className={styles.profile__info__edit}>
+							<label>Email</label>
+							<input
+								type="email"
+								name="email"
+								value={profile?.email}
+								disabled
+							/>
+							<p>Email can't be changed.</p>
+						</div>
+						<div className={styles.profile__info__edit}>
+							<label>Phone number</label>
+							<input
+								type="text"
+								name="phone"
+								value={profile?.phone}
+								onChange={handleInputChange}
+							/>
+						</div>
+						<div className={styles.profile__info__edit}>
+							<label>Bio</label>
+							<textarea
+								name="bio"
+								value={profile?.bio}
+								onChange={handleInputChange}
+								cols="20"
+								rows="5"
+							/>
+						</div>
+
+						<button type="submit" className="primary-button">
+							Save changes
+						</button>
+					</div>
+				</form>
+			</Card>
 		</div>
 	);
 };

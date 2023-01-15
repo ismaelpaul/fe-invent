@@ -11,8 +11,12 @@ import styles from './ItemDetailsModal.module.scss';
 
 const ItemDetailsModal = () => {
 	const [modalClassName, setModalClassName] = useState('item__details__open');
+
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
+
 	const { item } = useSelector((state) => state.item);
+	console.log(item, 'itemDetails');
+
 	const dispatch = useDispatch();
 
 	const stockStatus = (quantity) => {

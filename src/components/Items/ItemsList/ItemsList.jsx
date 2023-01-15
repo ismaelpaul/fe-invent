@@ -4,15 +4,16 @@ import { PulseLoader } from 'react-spinners';
 import {
 	FILTER_ITEMS,
 	selectFilteredItems,
-} from '../../../assets/redux/features/item/filterSlice';
+} from '../../../redux/features/item/filterSlice';
 import {
 	SET_ADD_ITEM_MODAL,
 	SET_ITEM_ID,
 	SET_DELETE_ITEM_MODAL,
 	SET_ITEM_DETAILS_MODAL,
 	getItem,
-} from '../../../assets/redux/features/item/itemSlice';
-import { SET_SIDEBAR } from '../../../assets/redux/features/sidebar/sidebarSlice';
+	SET_EDIT_ITEM_MODAL,
+} from '../../../redux/features/item/itemSlice';
+import { SET_SIDEBAR } from '../../../redux/features/sidebar/sidebarSlice';
 import { shortenText } from '../../../utils/utils';
 import Moment from 'react-moment';
 import { BiMessageSquareEdit } from 'react-icons/bi';
@@ -46,6 +47,13 @@ const ItemsList = ({ items, isLoading }) => {
 	};
 	const handleOpenDeleteItemModal = (id) => {
 		dispatch(SET_DELETE_ITEM_MODAL(true));
+		dispatch(SET_SIDEBAR(false));
+		dispatch(SET_ITEM_ID(id));
+	};
+
+	const handleOpenEditItemModal = async (id) => {
+		await dispatch(getItem(id));
+		dispatch(SET_EDIT_ITEM_MODAL(true));
 		dispatch(SET_SIDEBAR(false));
 		dispatch(SET_ITEM_ID(id));
 	};
@@ -129,7 +137,11 @@ const ItemsList = ({ items, isLoading }) => {
 												</Moment>
 												<div className={styles.list__icons__container}>
 													<div className={styles.list__icons__edit}>
-														<BiMessageSquareEdit />
+														<BiMessageSquareEdit
+															onClick={() => {
+																handleOpenEditItemModal(_id);
+															}}
+														/>
 													</div>
 													<div className={styles.list__icons__delete}>
 														<BsTrash

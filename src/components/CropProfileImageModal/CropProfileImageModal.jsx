@@ -2,7 +2,7 @@ import { Slider } from '@mui/material';
 import AvatarEditor from 'react-avatar-editor';
 
 import Card from '../Card/Card';
-import { selectIsSidebarOpen } from '../../assets/redux/features/sidebar/sidebarSlice';
+import { selectIsSidebarOpen } from '../../redux/features/sidebar/sidebarSlice';
 import { useSelector } from 'react-redux';
 import styles from './CropProfileImageModal.module.scss';
 import '../../styles/buttons.scss';

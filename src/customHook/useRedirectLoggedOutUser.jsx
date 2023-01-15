@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { SET_LOGIN } from '../assets/redux/features/auth/authSlice';
+import { SET_LOGIN } from '../redux/features/auth/authSlice';
 import { getLoginStatus } from '../utils/api';
 import { BsInfoCircle } from 'react-icons/bs';
 
