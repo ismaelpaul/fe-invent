@@ -15,7 +15,6 @@ const ItemDetailsModal = () => {
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 
 	const { item } = useSelector((state) => state.item);
-	console.log(item, 'itemDetails');
 
 	const dispatch = useDispatch();
 
