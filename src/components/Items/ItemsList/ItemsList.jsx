@@ -15,7 +15,7 @@ import {
 } from '../../../redux/features/item/itemSlice';
 import { SET_SIDEBAR } from '../../../redux/features/sidebar/sidebarSlice';
 import { shortenText } from '../../../utils/utils';
-import Moment from 'react-moment';
+import moment from 'moment';
 import { BiMessageSquareEdit } from 'react-icons/bi';
 import { BsTrash } from 'react-icons/bs';
 import SearchItems from '../../SearchItems/SearchItems';
@@ -151,12 +151,10 @@ const ItemsList = ({ items, isLoading }) => {
 													{price * quantity}
 												</td>
 												<td>
-													<Moment
-														format="DD/MM/YY"
-														className={styles.list__date}
-													>
-														{createdAt}
-													</Moment>
+													<span className={styles.list__date}>
+														{moment(createdAt).format('ll')}
+													</span>
+
 													<div className={styles.list__icons__container}>
 														<div className={styles.list__icons__edit}>
 															<BiMessageSquareEdit

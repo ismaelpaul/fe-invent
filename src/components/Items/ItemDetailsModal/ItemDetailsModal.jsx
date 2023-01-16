@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsSidebarOpen } from '../../../redux/features/sidebar/sidebarSlice';
 import { HiArrowNarrowRight } from 'react-icons/hi';
-import { BiMessageSquareEdit } from 'react-icons/bi';
 import { SET_ITEM_DETAILS_MODAL } from '../../../redux/features/item/itemSlice';
 import DOMPurify from 'dompurify';
-import Moment from 'react-moment';
+import moment from 'moment';
 import { useState } from 'react';
 import Card from '../../Card/Card';
 import styles from './ItemDetailsModal.module.scss';
@@ -86,13 +85,11 @@ const ItemDetailsModal = () => {
 					></div>
 					<hr />
 					<p>
-						<span>Created at:</span>{' '}
-						<Moment format="DD/MM/YY">{item.createdAt}</Moment>
+						<span>Created at:</span> {moment(item.createdAt).format('ll')}
 					</p>
 
 					<p>
-						<span>Last update:</span>{' '}
-						<Moment format="DD/MM/YY">{item.updatedAt}</Moment>
+						<span>Last update:</span> {moment(item.updatedAt).format('ll')}
 					</p>
 				</div>
 			</Card>
