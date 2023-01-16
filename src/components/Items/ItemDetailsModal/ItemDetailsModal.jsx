@@ -94,13 +94,6 @@ const ItemDetailsModal = () => {
 						<span>Last update:</span>{' '}
 						<Moment format="DD/MM/YY">{item.updatedAt}</Moment>
 					</p>
-					<hr />
-					<div className={styles.item__edit}>
-						<BiMessageSquareEdit className={styles.icon} />
-						<span>
-							<p>Edit item</p>
-						</span>
-					</div>
 				</div>
 			</Card>
 		</div>
