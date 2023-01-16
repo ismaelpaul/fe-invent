@@ -151,6 +151,16 @@ export const updateUserProfile = async (formData) => {
 	}
 };
 
+export const updatePassword = async (formData) => {
+	try {
+		const response = await inventApi.patch('/user/update-password', formData);
+
+		return response.data;
+	} catch (error) {
+		toast.error(error.response.data.message);
+	}
+};
+
 export const sendContactMessage = async (message) => {
 	try {
 		const response = await inventApi.post('/contact', message);
