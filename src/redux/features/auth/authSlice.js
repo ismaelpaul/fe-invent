@@ -4,6 +4,7 @@ const name = JSON.parse(localStorage.getItem('name'));
 
 const initialState = {
 	isLoggedIn: false,
+	isChangePasswordModalOpen: false,
 	name: name ? name : '',
 	user: {
 		name: '',
@@ -33,12 +34,18 @@ const authSlice = createSlice({
 			state.user.bio = profile.bio;
 			state.user.picture = profile.picture;
 		},
+		SET_CHANGE_PASSWORD_MODAL(state, action) {
+			state.isChangePasswordModalOpen = action.payload;
+		},
 	},
 });
 
-export const { SET_LOGIN, SET_NAME, SET_USER } = authSlice.actions;
+export const { SET_LOGIN, SET_NAME, SET_USER, SET_CHANGE_PASSWORD_MODAL } =
+	authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectisOpenChangePasswordModal = (state) =>
+	state.auth.isChangePasswordModalOpen;
 export const selectName = (state) => state.auth.name;
 export const selectUser = (state) => state.auth.user;
 
