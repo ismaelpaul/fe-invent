@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/features/auth/authSlice';
-import dropdownProfile from '../../data/dropdownprofile';
+import dropdownProfile from '../../data/dropdownProfile';
 import DropdownItems from './DropdownItems';
 import { FiLogOut } from 'react-icons/fi';
 import { SET_LOGIN } from '../../redux/features/auth/authSlice';
