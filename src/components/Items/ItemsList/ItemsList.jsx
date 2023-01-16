@@ -36,8 +36,6 @@ const ItemsList = ({ items, isLoading }) => {
 
 	const { height, width } = useWindowDimensions();
 
-	console.log(width, height);
-
 	let itemsPerPage;
 
 	if (height < 700) {
