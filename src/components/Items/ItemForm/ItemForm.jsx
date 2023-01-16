@@ -40,6 +40,7 @@ const ItemForm = ({
 							name="name"
 							value={item?.name}
 							onChange={handleInputChange}
+							required
 						/>
 					</div>
 					<div className={styles.form__category}>
@@ -50,6 +51,7 @@ const ItemForm = ({
 							name="category"
 							value={item?.category}
 							onChange={handleInputChange}
+							required
 						/>
 					</div>
 					<div className={styles.form__price}>
@@ -60,6 +62,7 @@ const ItemForm = ({
 							name="price"
 							value={item?.price}
 							onChange={handleInputChange}
+							required
 						/>
 					</div>
 					<div className={styles.form__quantity}>
@@ -70,6 +73,7 @@ const ItemForm = ({
 							name="quantity"
 							value={item?.quantity}
 							onChange={handleInputChange}
+							required
 						/>
 					</div>
 				</div>
