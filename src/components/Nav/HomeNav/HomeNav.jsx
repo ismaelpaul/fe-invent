@@ -1,4 +1,4 @@
-import { ShowOnLogin, ShowOnLogout } from '../../protect/hiddenlinks';
+import { ShowOnLogin, ShowOnLogout } from '../../Protect/HiddenLinks';
 import { Link } from 'react-router-dom';
 import { MdOutlineInventory2 } from 'react-icons/md';
 import styles from './HomeNav.module.scss';
