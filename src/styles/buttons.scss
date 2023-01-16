@@ -28,8 +28,12 @@
 	color: a.$primary-color;
 	&:hover {
 		border: 1px solid a.$primary-color;
-		box-shadow: 0rem 0rem 1rem lighten(a.$primary-color, 10);
+		box-shadow: 0rem 0rem 0.5rem lighten(a.$primary-color, 10);
 	}
+}
+.secondary-button-password {
+	@extend .secondary-button;
+	width: 100%;
 }
 
 .primary-button-delete {
@@ -39,8 +43,12 @@
 	color: white;
 	&:hover {
 		background-color: a.$delete;
-		box-shadow: 0rem 0rem 1rem lighten(a.$delete, 10);
+		box-shadow: 0rem 0rem 0.5rem lighten(a.$delete, 10);
 	}
+}
+.primary-button-password {
+	@extend .primary-button;
+	width: 100%;
 }
 
 .primary-button-home {
@@ -49,7 +57,7 @@
 	color: a.$primary-color;
 	border: 1px solid white;
 	&:hover {
-		box-shadow: 0rem 0rem 1rem lighten(white, 10);
+		box-shadow: 0rem 0rem 0.5rem lighten(white, 10);
 	}
 }
 .secondary-button-home {
@@ -72,7 +80,7 @@
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
 	.secondary-button-home {
 		width: 50%;
 	}
