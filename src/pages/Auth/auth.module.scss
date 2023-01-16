@@ -12,7 +12,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: 1rem;
-		animation: slide-up 0.5s ease;
+		animation: slide-right 0.5s ease;
 		form {
 			margin-top: 1rem;
 			.input {
@@ -35,10 +35,6 @@
 			}
 			.authButton {
 				width: 100%;
-				padding: 0.5rem;
-				border: 1px solid #ccc;
-				border-radius: 0.3rem;
-				font-size: 1rem;
 				margin: 1.5rem 0;
 			}
 		}
@@ -65,19 +61,19 @@
 	}
 }
 
-@keyframes slide-up {
+@keyframes slide-right {
 	0% {
-		transform: translateY(-5rem);
+		transform: translateX(-10rem);
 	}
 	100% {
-		transform: translateY(0);
+		transform: translateX(0);
 	}
 }
-@keyframes slide-down {
+@keyframes slide-left {
 	0% {
-		transform: translateY(5rem);
+		transform: translateX(10rem);
 	}
 	100% {
-		transform: translateY(0);
+		transform: translateX(0);
 	}
 }
