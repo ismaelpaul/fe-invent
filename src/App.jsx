@@ -29,7 +29,7 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<Toaster />
+			<Toaster toastOptions={{ style: { fontFamily: 'Roboto' } }} />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
