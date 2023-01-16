@@ -22,6 +22,7 @@ import SearchItems from '../../SearchItems/SearchItems';
 import ReactPaginate from 'react-paginate';
 import styles from './ItemsList.module.scss';
 import '../../../styles/buttons.scss';
+import useWindowDimensions from '../../../customHook/useWindowDimensions';
 
 const ItemsList = ({ items, isLoading }) => {
 	const [search, setSearch] = useState('');
@@ -29,11 +30,21 @@ const ItemsList = ({ items, isLoading }) => {
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
 
-	const itemsPerPage = 10;
-
 	const filteredItems = useSelector(selectFilteredItems);
 
 	const dispatch = useDispatch();
+
+	const { height, width } = useWindowDimensions();
+
+	console.log(width, height);
+
+	let itemsPerPage;
+
+	if (height < 700) {
+		itemsPerPage = 5;
+	} else {
+		itemsPerPage = 10;
+	}
 
 	const handleClickOnRow = async (id) => {
 		await dispatch(getItem(id));
@@ -97,64 +108,78 @@ const ItemsList = ({ items, isLoading }) => {
 					{!isLoading && items.length === 0 ? (
 						<p>No items found, please add an item.</p>
 					) : (
-						<table>
-							<thead>
-								<tr className={styles.list__title}>
-									<th>Number</th>
-									<th>Name</th>
-									<th>Category</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Value</th>
-									<th>Date</th>
-								</tr>
-							</thead>
-							<tbody>
-								{currentItems.map((item, index) => {
-									const { _id, name, category, price, quantity, createdAt } =
-										item;
-									return (
-										<tr className={styles.list__info} key={_id}>
-											<td onClick={() => handleClickOnRow(_id)}>
-												{index + 1 + '.'}
-											</td>
-											<td onClick={() => handleClickOnRow(_id)}>
-												{shortenText(name, 15)}
-											</td>
-											<td onClick={() => handleClickOnRow(_id)}>{category}</td>
-											<td onClick={() => handleClickOnRow(_id)}>
-												{'£'}
-												{price}
-											</td>
-											<td onClick={() => handleClickOnRow(_id)}>{quantity}</td>
-											<td onClick={() => handleClickOnRow(_id)}>
-												{'£'}
-												{price * quantity}
-											</td>
-											<td>
-												<Moment format="DD/MM/YY" className={styles.list__date}>
-													{createdAt}
-												</Moment>
-												<div className={styles.list__icons__container}>
-													<div className={styles.list__icons__edit}>
-														<BiMessageSquareEdit
-															onClick={() => {
-																handleOpenEditItemModal(_id);
-															}}
-														/>
+						<div className={styles.list__table__wrapper}>
+							<table>
+								<thead>
+									<tr className={styles.list__title}>
+										<th>Number</th>
+										<th>Name</th>
+										<th>Category</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Value</th>
+										<th>Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									{currentItems.map((item, index) => {
+										const { _id, name, category, price, quantity, createdAt } =
+											item;
+										return (
+											<tr className={styles.list__info} key={_id}>
+												<td onClick={() => handleClickOnRow(_id)}>
+													{index + 1 + '.'}
+												</td>
+												<td
+													className={styles.list__info__name}
+													onClick={() => handleClickOnRow(_id)}
+												>
+													{width >= 1440
+														? shortenText(name, 30)
+														: shortenText(name, 15)}
+												</td>
+												<td onClick={() => handleClickOnRow(_id)}>
+													{category}
+												</td>
+												<td onClick={() => handleClickOnRow(_id)}>
+													{'£'}
+													{price}
+												</td>
+												<td onClick={() => handleClickOnRow(_id)}>
+													{quantity}
+												</td>
+												<td onClick={() => handleClickOnRow(_id)}>
+													{'£'}
+													{price * quantity}
+												</td>
+												<td>
+													<Moment
+														format="DD/MM/YY"
+														className={styles.list__date}
+													>
+														{createdAt}
+													</Moment>
+													<div className={styles.list__icons__container}>
+														<div className={styles.list__icons__edit}>
+															<BiMessageSquareEdit
+																onClick={() => {
+																	handleOpenEditItemModal(_id);
+																}}
+															/>
+														</div>
+														<div className={styles.list__icons__delete}>
+															<BsTrash
+																onClick={() => handleOpenDeleteItemModal(_id)}
+															/>
+														</div>
 													</div>
-													<div className={styles.list__icons__delete}>
-														<BsTrash
-															onClick={() => handleOpenDeleteItemModal(_id)}
-														/>
-													</div>
-												</div>
-											</td>
-										</tr>
-									);
-								})}
-							</tbody>
-						</table>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
 					)}
 				</div>
 			)}
