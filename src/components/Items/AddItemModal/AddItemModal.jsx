@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
 	addItem,
-	selectIsLoading,
 	SET_ADD_ITEM_MODAL,
 } from '../../../redux/features/item/itemSlice';
 import { selectIsSidebarOpen } from '../../../redux/features/sidebar/sidebarSlice';
@@ -59,8 +58,8 @@ const AddItemModal = () => {
 		formData.append('description', description);
 		formData.append('image', itemImage);
 
-		await dispatch(addItem(formData));
 		await dispatch(SET_ADD_ITEM_MODAL(false));
+		await dispatch(addItem(formData));
 	};
 	return (
 		<div

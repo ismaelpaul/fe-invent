@@ -14,13 +14,12 @@ import Card from '../../Card/Card';
 const DeleteItemModal = () => {
 	const isSidebarOpen = useSelector(selectIsSidebarOpen);
 	const itemID = useSelector(selectItemID);
-
 	const dispatch = useDispatch();
 
 	const handleDeleteItem = async (itemID) => {
+		await dispatch(SET_DELETE_ITEM_MODAL(false));
 		await dispatch(deleteSingleItem(itemID));
 		await dispatch(getItems());
-		await dispatch(SET_DELETE_ITEM_MODAL(false));
 	};
 	return (
 		<div

@@ -11,17 +11,17 @@ import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
+const initialState = {
+	email: '',
+	password: '',
+};
+
 const Login = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const initialState = {
-		email: '',
-		password: '',
-	};
-
 	const [formData, setFormData] = useState(initialState);
 	const [isLoading, setIsLoading] = useState(false);
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const { email, password } = formData;
 

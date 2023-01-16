@@ -7,16 +7,18 @@ import Card from '../../components/Card/Card';
 import styles from './auth.module.scss';
 import '../../styles/buttons.scss';
 
-const Reset = () => {
-	const navigate = useNavigate();
-	const initialState = {
-		password: '',
-		confirmPassword: '',
-	};
+const initialState = {
+	password: '',
+	confirmPassword: '',
+};
 
+const Reset = () => {
 	const [formData, setFormData] = useState(initialState);
 
+	const navigate = useNavigate();
+
 	const { password, confirmPassword } = formData;
+
 	const { resetToken } = useParams();
 
 	const handleInputChange = (e) => {

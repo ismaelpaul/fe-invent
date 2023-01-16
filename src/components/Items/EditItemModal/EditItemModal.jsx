@@ -59,8 +59,8 @@ const EditItemModal = () => {
 			formData.append('image', itemImage);
 		}
 
-		await dispatch(updateItem({ itemID, formData }));
 		await dispatch(SET_EDIT_ITEM_MODAL(false));
+		await dispatch(updateItem({ itemID, formData }));
 		await dispatch(getItems());
 	};
 
