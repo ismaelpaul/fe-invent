@@ -3,9 +3,6 @@ import { toast } from 'react-hot-toast';
 
 const inventApi = axios.create({
 	baseURL: 'https://be-invent-dxgx.onrender.com/api',
-	headers: {
-		'Access-Control-Allow-Origin': 'https://invent-app.netlify.app',
-	},
 	withCredentials: true,
 	credentials: 'include',
 });
@@ -33,11 +30,7 @@ export const loginUser = async (userData) => {
 
 		return response.data;
 	} catch (error) {
-		const message =
-			(error.response && error.response.data && error.response.message) ||
-			error.message ||
-			error.toString();
-		toast.error(message);
+		toast.error(error.response.data.message);
 	}
 };
 
@@ -104,11 +97,7 @@ export const getUser = async () => {
 
 		return response.data;
 	} catch (error) {
-		const message =
-			(error.response && error.response.data && error.response.message) ||
-			error.message ||
-			error.toString();
-		toast.error(message);
+		toast.error(error.response.data.message);
 	}
 };
 
