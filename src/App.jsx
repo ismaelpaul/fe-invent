@@ -16,6 +16,8 @@ import { getLoginStatus } from './utils/api';
 import EditProfile from './pages/Profile/EditProfile';
 import Contact from './pages/Contact/Contact';
 
+axios.defaults.withCredentials = true;
+
 function App() {
 	const dispatch = useDispatch();
 
