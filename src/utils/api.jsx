@@ -3,12 +3,6 @@ import { toast } from 'react-hot-toast';
 
 const inventApi = axios.create({
 	baseURL: 'https://be-invent-dxgx.onrender.com/api',
-	headers: {
-		'Access-Control-Allow-Origin': [
-			'https://invent-app.netlify.app',
-			'http://localhost:5173',
-		],
-	},
 	withCredentials: true,
 	credentials: 'include',
 });
