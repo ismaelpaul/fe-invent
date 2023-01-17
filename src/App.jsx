@@ -15,9 +15,6 @@ import { useEffect } from 'react';
 import { getLoginStatus } from './utils/api';
 import EditProfile from './pages/Profile/EditProfile';
 import Contact from './pages/Contact/Contact';
-import axios from 'axios';
-
-axios.defaults.withCredentials = true;
 
 function App() {
 	const dispatch = useDispatch();
