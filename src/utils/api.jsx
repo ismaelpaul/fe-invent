@@ -3,6 +3,8 @@ import { toast } from 'react-hot-toast';
 
 const inventApi = axios.create({
 	baseURL: 'https://be-invent-dxgx.onrender.com/api',
+	withCredentials: true,
+	credentials: 'include',
 });
 
 export const registerUser = async (userData) => {
