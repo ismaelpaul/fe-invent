@@ -14,12 +14,12 @@ const Contact = () => {
 
 	const { height } = useWindowDimensions();
 
-	let cols;
+	let rows;
 
 	if (height <= 768) {
-		cols = 20;
+		rows = 5;
 	} else {
-		cols = 30;
+		rows = 10;
 	}
 
 	const contactMessage = {
@@ -66,8 +66,8 @@ const Contact = () => {
 								required
 								value={message}
 								onChange={(e) => setMessage(e.target.value)}
-								cols={cols}
-								rows={10}
+								cols={30}
+								rows={rows}
 							/>
 						</div>
 					</form>
