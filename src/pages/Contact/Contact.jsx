@@ -5,11 +5,22 @@ import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
 import Card from '../../components/Card/Card';
 import styles from './Contact.module.scss';
 import '../../styles/buttons.scss';
+import useWindowDimensions from '../../customHook/useWindowDimensions';
 
 const Contact = () => {
 	useRedirectLoggedOutUser('/login');
 	const [subject, setSubject] = useState('');
 	const [message, setMessage] = useState('');
+
+	const { height } = useWindowDimensions();
+
+	let cols;
+
+	if (height <= 768) {
+		cols = 20;
+	} else {
+		cols = 30;
+	}
 
 	const contactMessage = {
 		subject,
@@ -55,7 +66,7 @@ const Contact = () => {
 								required
 								value={message}
 								onChange={(e) => setMessage(e.target.value)}
-								cols={30}
+								cols={cols}
 								rows={10}
 							/>
 						</div>
