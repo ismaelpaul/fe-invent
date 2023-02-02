@@ -36,7 +36,7 @@ const Contact = () => {
 
 			toast.success(response.message);
 		} catch (error) {
-			toast.error(error.message);
+			console.log(error.message);
 		}
 	};
 	return (
@@ -71,7 +71,9 @@ const Contact = () => {
 							/>
 						</div>
 					</form>
-					<button className="primary-button">Send message</button>
+					<button type="submit" onClick={sendEmail} className="primary-button">
+						Send message
+					</button>
 				</div>
 			</Card>
 		</div>
