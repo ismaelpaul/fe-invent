@@ -41,7 +41,7 @@ const ChangePasswordModal = () => {
 		};
 
 		const response = await updatePassword(formData);
-		console.log(response, '<<< response');
+
 		dispatch(SET_CHANGE_PASSWORD_MODAL(false));
 		if (response !== undefined) {
 			toast.success(response);
