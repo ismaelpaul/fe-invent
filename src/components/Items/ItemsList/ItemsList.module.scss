@@ -156,7 +156,7 @@
 
 @media screen and (min-width: 768px) {
 	.list__container {
-		padding: 1rem 3.5rem;
+		padding: 1rem 2rem;
 	}
 }
 @media screen and (min-width: 9920px) {
@@ -167,9 +167,14 @@
 @media screen and (min-width: 1200px) {
 	.list__container {
 		padding: 1rem 3.5rem;
+		.list__table {
+			.list__table__wrapper {
+				height: 15.2rem;
+			}
+		}
 	}
 }
-@media screen and (min-width: 1400px), screen and (min-height: 650px) {
+@media screen and (min-width: 1400px) {
 	.list__container {
 		padding: 1rem 4.5rem;
 		.list__topSection {
